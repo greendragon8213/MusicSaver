@@ -1,6 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
+using System.Web.Http;
 using System.Web.Mvc;
 using ICSharpCode.SharpZipLib.Zip;
 using Logic.Abstract;
@@ -20,22 +23,12 @@ namespace MusicDownloader.Controllers
             _songDownloader = new SongDownloader(_songUrlProvider);
         }
 
-        // GET: Song
-        //public ActionResult Index()
-        //{
-        //    return View();
-        //}
-
-        public void DownloadAll()
+        public void DownloadSongs([FromUri]string[] songsList)
         {
-            List<string> songNames = new List<string>();
-            songNames.Add("IAMX - Kingdom of Welcome Addiction");
-            songNames.Add("IAMX - Imaginary begins");
-            songNames.Add("bevurgfeuryfgeugy");
-
             List<Song> songs = new List<Song>();
             StringBuilder logStringBuilder = new StringBuilder();
-            foreach (var songName in songNames)
+            int failedSongsCount = 0;
+            foreach (var songName in songsList)
             {
                 try
                 {
@@ -50,6 +43,7 @@ namespace MusicDownloader.Controllers
                     {
                         logStringBuilder.AppendLine("This is the list of songs we couldn't download:");
                     }
+                    failedSongsCount++;
                     logStringBuilder.AppendLine(songName);
                 }
             }
@@ -59,6 +53,8 @@ namespace MusicDownloader.Controllers
             {
                 log = "All songs have been downloaded successfylly.";
             }
+
+            log += $"\nSongs downloaded: {songsList.Length - failedSongsCount}/{songsList.Length}";
 
             DownloadZip(songs, log);
         }
@@ -95,5 +91,30 @@ namespace MusicDownloader.Controllers
                 zipStream.Close();
             }
         }
+
+        //private List<string> GetSongList(string inlineSongsList)
+        //{
+        //    List<string> songList = inlineSongsList.Split('\n').ToList();
+
+        //    songList = RemoveTimeSpan(songList);
+        //    songList = RemoveEmpty(songList);
+        //    songList = songList.Distinct().ToList();
+
+        //    return songList;
+        //}
+
+        //private List<string> RemoveEmpty(List<string> strings)
+        //{
+        //    strings.RemoveAll(string.IsNullOrWhiteSpace);
+        //    return strings;
+        //}
+
+        //private List<string> RemoveTimeSpan(List<string> strings)
+        //{
+        //    string timaSpanPattern = @"(\d)+:(\d)+";
+        //    Regex timeSpanpRegex = new Regex(timaSpanPattern, RegexOptions.IgnoreCase);
+        //    strings.RemoveAll(s => timeSpanpRegex.IsMatch(s));
+        //    return strings;
+        //}
     }
 }
