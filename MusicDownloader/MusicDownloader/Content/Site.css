@@ -16,3 +16,8 @@ textarea {
     max-width: 280px;
 }
 
+#songs-names-list {
+    max-width: 60%;
+    min-height: 300px;
+}
+

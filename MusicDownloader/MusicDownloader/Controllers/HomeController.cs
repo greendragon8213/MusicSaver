@@ -21,5 +21,15 @@ namespace MusicDownloader.Controllers
         {
             return View();
         }
+
+        public ActionResult HowItWorks()
+        {
+            return View();
+        }
+
+        public ActionResult FAQ()
+        {
+            return View();
+        }
     }
 }

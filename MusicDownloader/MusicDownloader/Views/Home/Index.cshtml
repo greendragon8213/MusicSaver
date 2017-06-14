@@ -3,9 +3,14 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Download songs from list</h2>
 
-<label>Songs name to download:</label>
-<textarea class="form-control" id="songs-names-list" required></textarea>
+<p>Specify the list of songs names you need to download</p>
+
+@*<label>Songs name to download:</label>*@
+<textarea class="form-control" rows="16" id="songs-names-list" required placeholder="Queen - Bohemian Rhapsody"></textarea>
 <br/>
-<button onclick="downloadSongs()" class="btn">Download songs</button>
+<button onclick="downloadSongs()" class="btn btn-lg btn-info">
+    <i class="fa fa-download" aria-hidden="true"></i>
+    Download songs
+</button>
