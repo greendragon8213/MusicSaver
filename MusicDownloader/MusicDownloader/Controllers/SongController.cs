@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Mvc;
+using ICSharpCode.SharpZipLib.Core;
 using ICSharpCode.SharpZipLib.Zip;
 using Logic.Abstract;
 using Logic.Exceptions;
@@ -23,7 +23,7 @@ namespace MusicDownloader.Controllers
             _songDownloader = new SongDownloader(_songUrlProvider);
         }
 
-        public void DownloadSongs([FromUri]string[] songsList)
+        public async Task DownloadSongs([FromUri]string[] songsList)
         {
             List<Song> songs = new List<Song>();
             StringBuilder logStringBuilder = new StringBuilder();
@@ -34,7 +34,7 @@ namespace MusicDownloader.Controllers
                 {
                     if (!string.IsNullOrEmpty(songName))
                     {
-                        songs.Add(_songDownloader.GetSong(songName));
+                        songs.Add(await _songDownloader.GetSongAsync(songName));
                     }
                 }
                 catch (SongNotFoundException)
@@ -56,10 +56,10 @@ namespace MusicDownloader.Controllers
 
             log += $"\nSongs downloaded: {songsList.Length - failedSongsCount}/{songsList.Length}";
 
-            DownloadZip(songs, log);
+            await Task.Run(() => DownloadZip(songs, log));
         }
 
-        private void DownloadZip(List<Song> songs, string readmeContent)
+        private void DownloadZip(List<Song> songs, string logContent)
         {
             Response.AddHeader("Content-Disposition", "attachment; filename=" + "Music" + ".zip");
             Response.ContentType = "application/zip";
@@ -68,20 +68,23 @@ namespace MusicDownloader.Controllers
             {
                 foreach (Song song in songs)
                 {
-                    //byte[] fileBytes = System.IO.File.ReadAllBytes(filePath);
-                    byte[] fileBytes = song.EntryBytes;
                     var fileEntry = new ZipEntry(Path.GetFileName(song.FullName + song.FileExtension))
                     {
-                        Size = fileBytes.Length
+                        Size = song.EntryBytes.Length
                     };
 
                     zipStream.PutNextEntry(fileEntry);
-                    zipStream.Write(fileBytes, 0, fileBytes.Length);
+
+                    //var memoryStream = new MemoryStream(song.EntryBytes);
+                    //StreamUtils.Copy(memoryStream, zipStream, new byte[1024]);
+                    //memoryStream.Close();
+                    zipStream.Write(song.EntryBytes, 0, song.EntryBytes.Length);
+                    zipStream.CloseEntry();
                 }
 
                 //adding readme
-                byte[] readmeFileBytes = System.Text.Encoding.Unicode.GetBytes(readmeContent);
-                zipStream.PutNextEntry(new ZipEntry(Path.GetFileName("readme.txt"))
+                byte[] readmeFileBytes = System.Text.Encoding.Unicode.GetBytes(logContent);
+                zipStream.PutNextEntry(new ZipEntry(Path.GetFileName("log.txt"))
                 {
                     Size = readmeFileBytes.Length
                 });

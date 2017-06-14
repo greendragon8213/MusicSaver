@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using HtmlAgilityPack;
 using Logic.Abstract;
 using Logic.Exceptions;
@@ -8,11 +9,11 @@ namespace Logic.Implementation
     public class ZfFmSongUrlProvider : ISongUrlProvider
     {
         private const string MusicSearchLink = "https://m.zf.fm/mp3/search?keywords=";
-        //private const string BaseUrl = "https://zf.fm";
+        private readonly HtmlWeb _htmlWeb = new HtmlWeb();
         
-        public string GetSongUrl(string songName)
+        public async Task<string> GetSongUrlAsync(string songName)
         {
-            HtmlDocument searchSongsPage = new HtmlWeb().Load(MusicSearchLink + songName);
+            HtmlDocument searchSongsPage = await Task.Run(() => _htmlWeb.Load(MusicSearchLink + songName));
             HtmlNode mp3FileFirstNode = searchSongsPage.DocumentNode.SelectSingleNode("//li[@class='tracks-item']");
             try
             {

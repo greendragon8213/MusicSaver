@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Net;
+using System.Threading.Tasks;
 using Logic.Abstract;
 using Logic.Exceptions;
 using Logic.Models;
@@ -17,19 +18,19 @@ namespace Logic.Implementation
             _songUrlProvider = songUrlProvider;
         }
         
-        public Song GetSong(string songName)
+        public async Task<Song> GetSongAsync(string songName)
         {
             if (string.IsNullOrEmpty(songName))
             {
                 return null;
             }
 
-            string songUrl = _songUrlProvider.GetSongUrl(songName);
+            string songUrl = await _songUrlProvider.GetSongUrlAsync(songName);
             
             byte[] songBytes;
             try
             {
-                songBytes = _webClient.DownloadData(songUrl);
+                songBytes = await _webClient.DownloadDataTaskAsync(songUrl);
             }
             catch (Exception)
             {
