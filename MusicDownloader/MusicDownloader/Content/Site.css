@@ -17,7 +17,11 @@ textarea {
 }
 
 #songs-names-list {
-    max-width: 60%;
+    max-width: 100%;
     min-height: 300px;
+}
+
+.additional {
+    padding: 0 15px;
 }
 

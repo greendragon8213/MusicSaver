@@ -1,22 +1,29 @@
-﻿function downloadSongs() {
-    $("#error").addClass("hide");
+﻿$('form').submit(function (e) {
+    e.preventDefault();
 
-    //var downloadFileUrl = window.location.origin + "/Song/DownloadSongs?songsList=" + $("#songs-names-list").value;
-    //window.location = downloadFileUrl;
+    var songsArray = GetSongsList();
 
-    var string = $("#songs-names-list").val();
-    var array = string.split("\n");
-    array = removeEmptyElements(array);
-    array = removeTimeSpanElements(array);
-    
-    var downloadFileUrl = window.location.origin + "/Song/DownloadSongs";
+    $(this).append($.map(songsArray, function (song) {
+        return $('<input>', {
+            type: 'hidden',
+            name: 'songsList',
+            value: song
+        });
+    }));
 
-    downloadFileUrl += "?songsList=" + array[0];
-    for (var i = 1; i < array.length; i++) {
-        downloadFileUrl += "&songsList=" + array[i];
-    }
+    this.submit();
+});
 
-    window.location = downloadFileUrl;
+function GetSongsList() {
+    $($('input[name=songsList]')).remove();
+
+    var songsString = $("#songs-names-list").val();
+    var songsArray = songsString.split("\n");
+
+    songsArray = removeEmptyElements(songsArray);
+    songsArray = removeTimeSpanElements(songsArray);
+
+    return songsArray;
 }
 
 function removeEmptyElements(array) {

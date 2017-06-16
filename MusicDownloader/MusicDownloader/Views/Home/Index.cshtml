@@ -4,13 +4,19 @@
 }
 
 <h2>Download songs from list</h2>
-
 <p>Specify the list of songs names you need to download</p>
 
-@*<label>Songs name to download:</label>*@
-<textarea class="form-control" rows="16" id="songs-names-list" required placeholder="Queen - Bohemian Rhapsody"></textarea>
-<br/>
-<button onclick="downloadSongs()" class="btn btn-lg btn-info">
-    <i class="fa fa-download" aria-hidden="true"></i>
-    Download songs
-</button>
+<div class="row">
+    <form action="/Song/DownloadSongs" method="POST" class="col-xs-12 col-md-8">
+        @*<input type="text" name="firstname" value="Mickey">*@
+        <textarea class="form-control" rows="16" id="songs-names-list" required placeholder="Queen - Bohemian Rhapsody"></textarea>
+        <br/>
+        <button type="submit" class="btn btn-lg btn-info">
+            <i class="fa fa-download" aria-hidden="true"></i>
+            Download songs
+        </button>
+        <br/>
+        <br/>
+    </form>
+    <div class="col-xs-12 col-md-4 additional"></div>
+</div>

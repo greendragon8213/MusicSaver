@@ -21,8 +21,9 @@ namespace MusicDownloader.Controllers
             _songUrlProvider = new ZfFmSongUrlProvider();
             _songDownloader = new SongDownloader(_songUrlProvider);
         }
-
-        public async Task DownloadSongs([FromUri]string[] songsList)
+        
+        [System.Web.Mvc.HttpPost]
+        public async Task DownloadSongs([FromBody]string[] songsList)
         {
             List<Song> songs = new List<Song>();
             StringBuilder logStringBuilder = new StringBuilder();
