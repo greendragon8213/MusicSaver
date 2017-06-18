@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Mvc;
 using ICSharpCode.SharpZipLib.Zip;
+using log4net;
 using Logic.Abstract;
 using Logic.Exceptions;
 using Logic.Implementation;
@@ -14,6 +15,7 @@ namespace MusicDownloader.Controllers
 {
     public class SongController : Controller
     {
+        private static readonly ILog _logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private readonly ISongUrlProvider _songUrlProvider;
         private readonly ISongDownloader _songDownloader;
         public SongController()//ToDo DI
@@ -32,7 +34,7 @@ namespace MusicDownloader.Controllers
             }
             catch (Exception exception)
             {
-                //ToDo
+                _logger.Error(exception.Message, exception);
                 return;
             }
 
@@ -167,7 +169,7 @@ namespace MusicDownloader.Controllers
             }
             catch (Exception exception)
             {
-                //ToDo log
+                _logger.Error(exception.Message, exception);
             }
             finally
             {
