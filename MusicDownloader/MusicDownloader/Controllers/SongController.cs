@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,7 +16,7 @@ namespace MusicDownloader.Controllers
     {
         private readonly ISongUrlProvider _songUrlProvider;
         private readonly ISongDownloader _songDownloader;
-        public SongController()//ToDo
+        public SongController()//ToDo DI
         {
             _songUrlProvider = new ZfFmSongUrlProvider();
             _songDownloader = new SongDownloader(_songUrlProvider);
@@ -25,73 +25,160 @@ namespace MusicDownloader.Controllers
         [System.Web.Mvc.HttpPost]
         public async Task DownloadSongs([FromBody]string[] songsList)
         {
-            List<Song> songs = new List<Song>();
-            StringBuilder logStringBuilder = new StringBuilder();
-            int failedSongsCount = 0;
-            foreach (var songName in songsList)
+            MemoryStream songsMemoryStream;
+            try
             {
-                try
-                {
-                    if (!string.IsNullOrEmpty(songName))
-                    {
-                        songs.Add(await _songDownloader.GetSongAsync(songName));
-                    }
-                }
-                catch (SongNotFoundException)
-                {
-                    if (logStringBuilder.Length == 0)
-                    {
-                        logStringBuilder.AppendLine("This is the list of songs we couldn't download:");
-                    }
-                    failedSongsCount++;
-                    logStringBuilder.AppendLine(songName);
-                }
+                songsMemoryStream = await GetZipStreamAsync(songsList);
+            }
+            catch (Exception exception)
+            {
+                //ToDo
+                return;
             }
 
-            string log = logStringBuilder.ToString();
-            if (string.IsNullOrEmpty(log))
-            {
-                log = "All songs have been downloaded successfylly.";
-            }
-
-            log += $"\nSongs downloaded: {songsList.Length - failedSongsCount}/{songsList.Length}";
-
-            await Task.Run(() => DownloadZip(songs, log));
+            DownloadStream(songsMemoryStream);
         }
-
-        private void DownloadZip(List<Song> songs, string logContent)
+        
+        private async Task<MemoryStream> GetZipStreamAsync(string[] songsList)
         {
-            Response.AddHeader("Content-Disposition", "attachment; filename=" + "Music" + ".zip");
-            Response.ContentType = "application/zip";
-
-            using (var zipStream = new ZipOutputStream(Response.OutputStream))
+            var outputMemoryStream = new MemoryStream();
+            using (var zipStream = new ZipOutputStream(outputMemoryStream))
             {
-                foreach (Song song in songs)
+                StringBuilder logStringBuilder = new StringBuilder();
+                int failedSongsCount = 0;
+
+                foreach (string songName in songsList)
                 {
-                    var fileEntry = new ZipEntry(Path.GetFileName(song.FullName + song.FileExtension))
+                    if (string.IsNullOrEmpty(songName))
                     {
-                        Size = song.EntryBytes.Length
-                    };
+                        continue;
+                    }
 
-                    zipStream.PutNextEntry(fileEntry);
+                    try
+                    {
+                        using (Song song = await _songDownloader.GetSongAsync(songName))
+                        {
+                            var fileEntry = new ZipEntry(Path.GetFileName(song.FullName + song.FileExtension))
+                            {
+                                Size = song.EntryBytes.Length
+                            };
 
-                    //var memoryStream = new MemoryStream(song.EntryBytes);
-                    //StreamUtils.Copy(memoryStream, zipStream, new byte[1024]);
-                    //memoryStream.Close();
-                    zipStream.Write(song.EntryBytes, 0, song.EntryBytes.Length);
-                    zipStream.CloseEntry();
+                            zipStream.PutNextEntry(fileEntry);
+                            zipStream.Write(song.EntryBytes, 0, song.EntryBytes.Length);
+
+                            zipStream.CloseEntry();
+                        }
+                    }
+                    catch (SongNotFoundException)
+                    {
+                        if (logStringBuilder.Length == 0)
+                        {
+                            logStringBuilder.AppendLine("This is the list of songs we couldn't download:");
+                        }
+                        failedSongsCount++;
+                        logStringBuilder.AppendLine(songName);
+                    }
                 }
 
-                //adding readme
-                byte[] readmeFileBytes = System.Text.Encoding.Unicode.GetBytes(logContent);
-                zipStream.PutNextEntry(new ZipEntry(Path.GetFileName("log.txt"))
-                {
-                    Size = readmeFileBytes.Length
-                });
-                zipStream.Write(readmeFileBytes, 0, readmeFileBytes.Length);
-
+                AddLogFileToArchive(zipStream, logStringBuilder, songsList.Length, songsList.Length - failedSongsCount);
+                
                 zipStream.Flush();
                 zipStream.Close();
+                outputMemoryStream = new MemoryStream(outputMemoryStream.ToArray());
+            }
+
+            return outputMemoryStream;
+        }
+
+        private void AddLogFileToArchive(ZipOutputStream zipStream, StringBuilder logStringBuilder, 
+            int allSongsCount, int successDownloadedSongsCount)
+        {
+            if (logStringBuilder.Length == 0)
+            {
+                logStringBuilder.AppendLine("All songs have been downloaded successfylly.");
+            }
+
+            logStringBuilder.AppendLine($"Songs downloaded: {successDownloadedSongsCount}/{allSongsCount}");
+
+            //Adding download log
+            byte[] readmeFileBytes = Encoding.Unicode.GetBytes(logStringBuilder.ToString());
+            zipStream.PutNextEntry(new ZipEntry(Path.GetFileName("log.txt"))
+            {
+                Size = readmeFileBytes.Length
+            });
+            zipStream.Write(readmeFileBytes, 0, readmeFileBytes.Length);
+        }
+
+        private void DownloadStream(Stream inputStream)
+        {
+            try
+            {
+                Response.Buffer = false;
+
+                // Setting the unknown [ContentType]
+                // will display the saving dialog for the user
+                Response.ContentType = "application/octet-stream";
+
+                // With setting the file name,
+                // in the saving dialog, user will see
+                // the [strFileName] name instead of [download]!
+                Response.AddHeader("Content-Disposition", "attachment; filename=" + "MusicArchive.zip");
+
+                long fileLength = inputStream.Length;
+
+                // Notify user (client) the total file length
+                Response.AddHeader("Content-Length", fileLength.ToString());
+
+                // Total bytes that should be read
+                long fileLengthToRead = fileLength;
+
+                // Read the bytes of file
+                while (fileLengthToRead > 0)
+                {
+                    // Verify that the client is connected or not
+                    if (Response.IsClientConnected)
+                    {
+                        // 32KB
+                        int bufferSize = 32 * 1024;
+
+                        // Create buffer for reading [intBufferSize] bytes from file
+                        byte[] buffer = new byte[bufferSize];
+
+                        // Read the data and put it in the buffer.
+                        int bytesNumberReadFromStream =
+                            inputStream.Read(buffer: buffer, offset: 0, count: bufferSize);
+
+                        // Write the data from buffer to the current output stream.
+                        Response.OutputStream.Write
+                            (buffer: buffer, offset: 0,
+                            count: bytesNumberReadFromStream);
+
+                        // Send the data to output (Don't buffer in server's RAM!!!)
+                        Response.Flush();
+
+                        fileLengthToRead = fileLengthToRead - bytesNumberReadFromStream;
+                    }
+                    else
+                    {
+                        // Prevent infinite loop if user disconnected!
+                        fileLengthToRead = -1;
+                    }
+                }
+            }
+            catch (Exception exception)
+            {
+                //ToDo log
+            }
+            finally
+            {
+                if (inputStream != null)
+                {
+                    inputStream.Flush();
+                    inputStream.Close();
+                    inputStream.Dispose();
+                    inputStream = null;
+                }
+                Response.Close();
             }
         }
 
