@@ -45,57 +45,58 @@ namespace MusicDownloader.Controllers
             }
 
             DownloadStream(songsStream);
+            songsStream = null;
         }
         
         private async Task<Stream> GetZipStreamAsync(string[] songsList)
         {
             Stream outputFileStream = new FileStream("D:/testzip.zip", FileMode.Create, FileAccess.Write);
-            using (var zipStream = new ZipOutputStream(outputFileStream))
+            var zipStream = new ZipOutputStream(outputFileStream);
+            StringBuilder logStringBuilder = new StringBuilder();
+            int failedSongsCount = 0;
+
+            foreach (string songName in songsList)
             {
-                StringBuilder logStringBuilder = new StringBuilder();
-                int failedSongsCount = 0;
-
-                foreach (string songName in songsList)
+                if (string.IsNullOrEmpty(songName))
                 {
-                    if (string.IsNullOrEmpty(songName))
-                    {
-                        continue;
-                    }
-
-                    try
-                    {
-                        using (Song song = await _songDownloader.GetSongAsync(songName))
-                        {
-                            var fileEntry = new ZipEntry(Path.GetFileName(song.FullName + song.FileExtension))
-                            {
-                                Size = song.EntryBytes.Length
-                            };
-
-                            zipStream.PutNextEntry(fileEntry);
-                            zipStream.Write(song.EntryBytes, 0, song.EntryBytes.Length);
-
-                            zipStream.CloseEntry();
-                        }
-                    }
-                    catch (SongNotFoundException)
-                    {
-                        if (logStringBuilder.Length == 0)
-                        {
-                            logStringBuilder.AppendLine("This is the list of songs we couldn't download:");
-                        }
-                        failedSongsCount++;
-                        logStringBuilder.AppendLine(songName);
-                    }
+                    continue;
                 }
 
-                AddLogFileToArchive(zipStream, logStringBuilder, songsList.Length, songsList.Length - failedSongsCount);
-           
-                zipStream.Flush();
-                zipStream.Close();
+                try
+                {
+                    using (Song song = await _songDownloader.GetSongAsync(songName))
+                    {
+                        var fileEntry = new ZipEntry(Path.GetFileName(song.FullName + song.FileExtension))
+                        {
+                            Size = song.EntryBytes.Length
+                        };
 
-                outputFileStream.Close();
-                outputFileStream.Dispose();
+                        zipStream.PutNextEntry(fileEntry);
+                        zipStream.Write(song.EntryBytes, 0, song.EntryBytes.Length);
+
+                        zipStream.CloseEntry();
+                    }
+                }
+                catch (SongNotFoundException)
+                {
+                    if (logStringBuilder.Length == 0)
+                    {
+                        logStringBuilder.AppendLine("This is the list of songs we couldn't download:");
+                    }
+                    failedSongsCount++;
+                    logStringBuilder.AppendLine(songName);
+                }
             }
+
+            AddLogFileToArchive(zipStream, logStringBuilder, songsList.Length, songsList.Length - failedSongsCount);
+           
+            zipStream.Flush();
+            zipStream.Close();
+
+            outputFileStream.Close();
+            outputFileStream.Dispose();
+            outputFileStream = null;
+            zipStream = null;
 
             return new FileStream("D:/testzip.zip", FileMode.Open, FileAccess.Read);
         }
@@ -142,18 +143,18 @@ namespace MusicDownloader.Controllers
                 // Total bytes that should be read
                 long fileLengthToRead = fileLength;
 
+                // 32KB
+                int bufferSize = 32 * 1024;
+
+                // Create buffer for reading [intBufferSize] bytes from file
+                byte[] buffer = new byte[bufferSize];
+
                 // Read the bytes of file
                 while (fileLengthToRead > 0)
                 {
                     // Verify that the client is connected or not
                     if (Response.IsClientConnected)
                     {
-                        // 32KB
-                        int bufferSize = 32 * 1024;
-
-                        // Create buffer for reading [intBufferSize] bytes from file
-                        byte[] buffer = new byte[bufferSize];
-
                         // Read the data and put it in the buffer.
                         int bytesNumberReadFromStream =
                             inputStream.Read(buffer: buffer, offset: 0, count: bufferSize);
@@ -184,7 +185,7 @@ namespace MusicDownloader.Controllers
                 if (inputStream != null)
                 {
                     inputStream.Flush();
-                    inputStream.Close();
+                    //inputStream.Close();
                     inputStream.Dispose();
                 }
                 Response.Close();
