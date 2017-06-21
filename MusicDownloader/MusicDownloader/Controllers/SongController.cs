@@ -27,24 +27,30 @@ namespace MusicDownloader.Controllers
         [System.Web.Mvc.HttpPost]
         public async Task DownloadSongs([FromBody]string[] songsList)
         {
-            MemoryStream songsMemoryStream;
+            Stream songsStream = null;
             try
             {
-                songsMemoryStream = await GetZipStreamAsync(songsList);
+                songsStream = await GetZipStreamAsync(songsList);
             }
             catch (Exception exception)
             {
                 _logger.Error(exception.Message, exception);
+                if (songsStream != null)
+                {
+                    songsStream.Flush();
+                    songsStream.Close();
+                    songsStream.Dispose();
+                }
                 return;
             }
 
-            DownloadStream(songsMemoryStream);
+            DownloadStream(songsStream);
         }
         
-        private async Task<MemoryStream> GetZipStreamAsync(string[] songsList)
+        private async Task<Stream> GetZipStreamAsync(string[] songsList)
         {
-            var outputMemoryStream = new MemoryStream();
-            using (var zipStream = new ZipOutputStream(outputMemoryStream))
+            Stream outputFileStream = new FileStream("D:/testzip.zip", FileMode.Create, FileAccess.Write);
+            using (var zipStream = new ZipOutputStream(outputFileStream))
             {
                 StringBuilder logStringBuilder = new StringBuilder();
                 int failedSongsCount = 0;
@@ -83,13 +89,15 @@ namespace MusicDownloader.Controllers
                 }
 
                 AddLogFileToArchive(zipStream, logStringBuilder, songsList.Length, songsList.Length - failedSongsCount);
-                
+           
                 zipStream.Flush();
                 zipStream.Close();
-                outputMemoryStream = new MemoryStream(outputMemoryStream.ToArray());
+
+                outputFileStream.Close();
+                outputFileStream.Dispose();
             }
 
-            return outputMemoryStream;
+            return new FileStream("D:/testzip.zip", FileMode.Open, FileAccess.Read);
         }
 
         private void AddLogFileToArchive(ZipOutputStream zipStream, StringBuilder logStringBuilder, 
@@ -178,7 +186,6 @@ namespace MusicDownloader.Controllers
                     inputStream.Flush();
                     inputStream.Close();
                     inputStream.Dispose();
-                    inputStream = null;
                 }
                 Response.Close();
             }
