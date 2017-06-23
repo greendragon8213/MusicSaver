@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Threading.Tasks;
 using System.Web.Http;
@@ -28,7 +29,8 @@ namespace MusicDownloader.Controllers
         {
             try
             {
-                string temporaryFilesPath = "D:/";
+                string temporaryFilesPath = Path.Combine(Server.MapPath("~"), 
+                    (ConfigurationManager.AppSettings["TemporaryFilesFolderName"]));
                 string savedFileName = await _musicArchiveService.CreateMusicArchive(songsList, temporaryFilesPath);
                 return Json(new { fileName = savedFileName });
             }
@@ -42,7 +44,9 @@ namespace MusicDownloader.Controllers
 
         public void DownloadMusicArchive(string fileName)
         {
-            string temporaryFilesPath = "D:/";
+            string temporaryFilesPath = Path.Combine(Server.MapPath("~"),
+                    (ConfigurationManager.AppSettings["TemporaryFilesFolderName"]));
+
             Stream musicStream = _musicArchiveService.GetStream(Path.Combine(temporaryFilesPath, fileName));
             DownloadStream(musicStream);
 

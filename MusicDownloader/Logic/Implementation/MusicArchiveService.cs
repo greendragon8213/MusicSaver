@@ -22,6 +22,9 @@ namespace Logic.Implementation
 
         public async Task<string> CreateMusicArchive(List<string> songsList, string path)
         {
+            if (!Directory.Exists(path))
+                Directory.CreateDirectory(path);
+
             string fileName = Guid.NewGuid() + ".zip";
             Stream outputFileStream = new FileStream(Path.Combine(path, fileName), FileMode.Create, FileAccess.Write);
             var zipStream = new ZipOutputStream(outputFileStream);
