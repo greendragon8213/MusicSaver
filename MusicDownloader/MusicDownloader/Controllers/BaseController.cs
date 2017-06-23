@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Globalization;
 using System.IO;
+using System.Threading;
 using System.Web.Mvc;
 using log4net;
+using MusicDownloader.Resources;
 
 namespace MusicDownloader.Controllers
 {
@@ -9,6 +12,11 @@ namespace MusicDownloader.Controllers
     public abstract class BaseController : Controller
     {
         protected static readonly ILog Logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
+        protected BaseController()
+        {
+            SetThreadCultureByRequestHeader();
+        }
 
         protected override void OnException(ExceptionContext filterContext)
         {
@@ -26,14 +34,14 @@ namespace MusicDownloader.Controllers
             if (filterContext.Exception is OutOfMemoryException)
             {
                 Response.StatusCode = 500;
-                filterContext.Result = GetErrorJsonResult("You are trying to get too much files per request. Please try to get less.");
+                filterContext.Result = GetErrorJsonResult(ErrorMessages.TooMuchFilesPerRequest);
                 return;
             }
 
             if (filterContext.Exception is FileNotFoundException || filterContext.Exception is DirectoryNotFoundException)
             {
                 Response.StatusCode = 404;
-                filterContext.Result = GetErrorJsonResult("The file you are looking for could not be found.");
+                filterContext.Result = GetErrorJsonResult(ErrorMessages.FileNotFound);
                 return;
             }
 
@@ -43,10 +51,31 @@ namespace MusicDownloader.Controllers
             //base.OnActionExecuting(filterContext);
         }
 
+        #region Private methods
+
         private JsonResult GetErrorJsonResult(string message)
         {
             return Json(new { errorMessage = message }, 
                 JsonRequestBehavior.AllowGet);
         }
+
+        private void SetThreadCultureByRequestHeader()
+        {
+            var userCulture = CultureInfo.InvariantCulture;
+            try
+            {
+                
+                var userLanguages = System.Web.HttpContext.Current.Request.UserLanguages;
+                userCulture = CultureInfo.GetCultureInfo(userLanguages[0]);
+            }
+            catch (Exception)
+            {
+                // ignored
+            }
+
+            Thread.CurrentThread.CurrentUICulture = userCulture;
+        }
+
+        #endregion
     }
 }

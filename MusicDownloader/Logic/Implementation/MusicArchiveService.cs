@@ -7,6 +7,7 @@ using ICSharpCode.SharpZipLib.Zip;
 using Logic.Abstract;
 using Logic.Exceptions;
 using Logic.Models;
+using Logic.Resources;
 
 namespace Logic.Implementation
 {
@@ -56,7 +57,7 @@ namespace Logic.Implementation
                 {
                     if (logStringBuilder.Length == 0)
                     {
-                        logStringBuilder.AppendLine("This is the list of songs we couldn't download:");
+                        logStringBuilder.AppendLine(LogText.ThisIsListOfSongsWeCouldntDownload);
                     }
                     failedSongsCount++;
                     logStringBuilder.AppendLine(songName);
@@ -94,10 +95,10 @@ namespace Logic.Implementation
         {
             if (logStringBuilder.Length == 0)
             {
-                logStringBuilder.AppendLine("All songs have been downloaded successfylly.");
+                logStringBuilder.AppendLine(LogText.AllSongsDownloadedSuccessfully);
             }
 
-            logStringBuilder.AppendLine($"Songs downloaded: {successDownloadedSongsCount}/{allSongsCount}");
+            logStringBuilder.AppendLine($"{LogText.SongsDownloaded} {successDownloadedSongsCount}/{allSongsCount}");
 
             //Adding download log
             byte[] readmeFileBytes = Encoding.Unicode.GetBytes(logStringBuilder.ToString());

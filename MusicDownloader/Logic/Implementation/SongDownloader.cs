@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Logic.Abstract;
 using Logic.Exceptions;
 using Logic.Models;
+using Logic.Resources;
 
 namespace Logic.Implementation
 {
@@ -34,7 +35,7 @@ namespace Logic.Implementation
             }
             catch (Exception)
             {
-                throw new SongNotFoundException("Cannot download song by url.");
+                throw new SongNotFoundException(ExceptionMessages.CannotDownloadSongByUrl);
             }
 
             return new Song()

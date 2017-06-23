@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using HtmlAgilityPack;
 using Logic.Abstract;
 using Logic.Exceptions;
+using Logic.Resources;
 
 namespace Logic.Implementation
 {
@@ -21,7 +22,7 @@ namespace Logic.Implementation
             }
             catch (Exception)
             {
-                throw new SongNotFoundException("Cannot get song url.");
+                throw new SongNotFoundException(ExceptionMessages.CannotGetSongUrl);
             }
         }
     }

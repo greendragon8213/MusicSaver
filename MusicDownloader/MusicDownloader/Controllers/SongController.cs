@@ -5,9 +5,9 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Mvc;
-using log4net;
 using Logic.Abstract;
 using Logic.Implementation;
+using MusicDownloader.Resources;
 
 namespace MusicDownloader.Controllers
 {
@@ -27,7 +27,7 @@ namespace MusicDownloader.Controllers
         public async Task<ActionResult> FormMusicArchive([FromBody]List<string> songsList)
         {
             if(songsList == null || songsList.Count == 0)
-                throw new ArgumentException("Songs list to download is empty. Please specify at least one song.");
+                throw new ArgumentException(ErrorMessages.SongsListIsEmpty);
 
             string temporaryFilesPath = Path.Combine(Server.MapPath("~"), 
                 (ConfigurationManager.AppSettings["TemporaryFilesFolderName"]));
@@ -39,7 +39,7 @@ namespace MusicDownloader.Controllers
         public void DownloadMusicArchive(string fileName)
         {
             if(string.IsNullOrEmpty(fileName))
-                throw new ArgumentException("Cannot find music archive to download because it's name is empty.");
+                throw new ArgumentException(ErrorMessages.MusicArchiveNameIsEmpty);
 
             string temporaryFilesPath = Path.Combine(Server.MapPath("~"),
                     (ConfigurationManager.AppSettings["TemporaryFilesFolderName"]));

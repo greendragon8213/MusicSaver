@@ -57,11 +57,66 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Abstract\ISongUrlProvider.cs" />
     <Compile Include="Implementation\SongDownloader.cs" />
+    <Compile Include="Resources\ExceptionMessages.UK.Designer.cs">
+      <DependentUpon>ExceptionMessages.UK.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\ExceptionMessages.RU.Designer.cs">
+      <DependentUpon>ExceptionMessages.RU.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\ExceptionMessages.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ExceptionMessages.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\LogText.UK.Designer.cs">
+      <DependentUpon>LogText.UK.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\LogText.RU.Designer.cs">
+      <DependentUpon>LogText.RU.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\LogText.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LogText.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\ExceptionMessages.UK.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ExceptionMessages.UK.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ExceptionMessages.RU.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ExceptionMessages.RU.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ExceptionMessages.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ExceptionMessages.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\LogText.UK.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>LogText.UK.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\LogText.RU.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>LogText.RU.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\LogText.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>LogText.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
