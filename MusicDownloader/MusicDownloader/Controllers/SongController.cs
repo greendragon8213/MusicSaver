@@ -1,15 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
-using System.Text;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Mvc;
-using ICSharpCode.SharpZipLib.Zip;
 using log4net;
 using Logic.Abstract;
-using Logic.Exceptions;
 using Logic.Implementation;
-using Logic.Models;
 
 namespace MusicDownloader.Controllers
 {
@@ -18,107 +15,42 @@ namespace MusicDownloader.Controllers
         private static readonly ILog _logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private readonly ISongUrlProvider _songUrlProvider;
         private readonly ISongDownloader _songDownloader;
+        private readonly IMusicArchiveService _musicArchiveService;
         public SongController()//ToDo DI
         {
             _songUrlProvider = new ZfFmSongUrlProvider();
             _songDownloader = new SongDownloader(_songUrlProvider);
+            _musicArchiveService = new MusicArchiveService(_songDownloader);
         }
-        
+
         [System.Web.Mvc.HttpPost]
-        public async Task DownloadSongs([FromBody]string[] songsList)
+        public async Task<ActionResult> FormMusicArchive([FromBody]List<string> songsList)
         {
-            Stream songsStream = null;
             try
             {
-                songsStream = await GetZipStreamAsync(songsList);
+                string temporaryFilesPath = "D:/";
+                string savedFileName = await _musicArchiveService.CreateMusicArchive(songsList, temporaryFilesPath);
+                return Json(new { fileName = savedFileName });
             }
             catch (Exception exception)
             {
                 _logger.Error(exception.Message, exception);
-                if (songsStream != null)
-                {
-                    songsStream.Flush();
-                    songsStream.Close();
-                    songsStream.Dispose();
-                }
-                return;
+                Response.StatusCode = 500;
+                return Json(new { errorMessage = exception.Message});
             }
+        }
 
-            DownloadStream(songsStream);
-            songsStream = null;
+        public void DownloadMusicArchive(string fileName)
+        {
+            string temporaryFilesPath = "D:/";
+            Stream musicStream = _musicArchiveService.GetStream(Path.Combine(temporaryFilesPath, fileName));
+            DownloadStream(musicStream);
+
+            musicStream = null;
+            _musicArchiveService.DeleteFile(Path.Combine(temporaryFilesPath, fileName));
         }
         
-        private async Task<Stream> GetZipStreamAsync(string[] songsList)
-        {
-            Stream outputFileStream = new FileStream("D:/testzip.zip", FileMode.Create, FileAccess.Write);
-            var zipStream = new ZipOutputStream(outputFileStream);
-            StringBuilder logStringBuilder = new StringBuilder();
-            int failedSongsCount = 0;
-
-            foreach (string songName in songsList)
-            {
-                if (string.IsNullOrEmpty(songName))
-                {
-                    continue;
-                }
-
-                try
-                {
-                    using (Song song = await _songDownloader.GetSongAsync(songName))
-                    {
-                        var fileEntry = new ZipEntry(Path.GetFileName(song.FullName + song.FileExtension))
-                        {
-                            Size = song.EntryBytes.Length
-                        };
-
-                        zipStream.PutNextEntry(fileEntry);
-                        zipStream.Write(song.EntryBytes, 0, song.EntryBytes.Length);
-
-                        zipStream.CloseEntry();
-                    }
-                }
-                catch (SongNotFoundException)
-                {
-                    if (logStringBuilder.Length == 0)
-                    {
-                        logStringBuilder.AppendLine("This is the list of songs we couldn't download:");
-                    }
-                    failedSongsCount++;
-                    logStringBuilder.AppendLine(songName);
-                }
-            }
-
-            AddLogFileToArchive(zipStream, logStringBuilder, songsList.Length, songsList.Length - failedSongsCount);
-           
-            zipStream.Flush();
-            zipStream.Close();
-
-            outputFileStream.Close();
-            outputFileStream.Dispose();
-            outputFileStream = null;
-            zipStream = null;
-
-            return new FileStream("D:/testzip.zip", FileMode.Open, FileAccess.Read);
-        }
-
-        private void AddLogFileToArchive(ZipOutputStream zipStream, StringBuilder logStringBuilder, 
-            int allSongsCount, int successDownloadedSongsCount)
-        {
-            if (logStringBuilder.Length == 0)
-            {
-                logStringBuilder.AppendLine("All songs have been downloaded successfylly.");
-            }
-
-            logStringBuilder.AppendLine($"Songs downloaded: {successDownloadedSongsCount}/{allSongsCount}");
-
-            //Adding download log
-            byte[] readmeFileBytes = Encoding.Unicode.GetBytes(logStringBuilder.ToString());
-            zipStream.PutNextEntry(new ZipEntry(Path.GetFileName("log.txt"))
-            {
-                Size = readmeFileBytes.Length
-            });
-            zipStream.Write(readmeFileBytes, 0, readmeFileBytes.Length);
-        }
+        #region Private methods
 
         private void DownloadStream(Stream inputStream)
         {
@@ -179,6 +111,7 @@ namespace MusicDownloader.Controllers
             catch (Exception exception)
             {
                 _logger.Error(exception.Message, exception);
+                //ToDo return error response
             }
             finally
             {
@@ -216,5 +149,7 @@ namespace MusicDownloader.Controllers
         //    strings.RemoveAll(s => timeSpanpRegex.IsMatch(s));
         //    return strings;
         //}
+
+        #endregion
     }
 }
