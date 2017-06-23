@@ -3,6 +3,9 @@ using System.Runtime.Serialization;
 
 namespace Logic.Exceptions
 {
+    /// <summary>
+    /// The exception that is thrown when song is not found.
+    /// </summary>
     [Serializable]
     public class SongNotFoundException : Exception
     {

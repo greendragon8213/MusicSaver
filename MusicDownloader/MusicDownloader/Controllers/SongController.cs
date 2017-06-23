@@ -11,9 +11,8 @@ using Logic.Implementation;
 
 namespace MusicDownloader.Controllers
 {
-    public class SongController : Controller
+    public class SongController : BaseController
     {
-        private static readonly ILog _logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private readonly ISongUrlProvider _songUrlProvider;
         private readonly ISongDownloader _songDownloader;
         private readonly IMusicArchiveService _musicArchiveService;
@@ -27,23 +26,21 @@ namespace MusicDownloader.Controllers
         [System.Web.Mvc.HttpPost]
         public async Task<ActionResult> FormMusicArchive([FromBody]List<string> songsList)
         {
-            try
-            {
-                string temporaryFilesPath = Path.Combine(Server.MapPath("~"), 
-                    (ConfigurationManager.AppSettings["TemporaryFilesFolderName"]));
-                string savedFileName = await _musicArchiveService.CreateMusicArchive(songsList, temporaryFilesPath);
-                return Json(new { fileName = savedFileName });
-            }
-            catch (Exception exception)
-            {
-                _logger.Error(exception.Message, exception);
-                Response.StatusCode = 500;
-                return Json(new { errorMessage = exception.Message});
-            }
+            if(songsList == null || songsList.Count == 0)
+                throw new ArgumentException("Songs list to download is empty. Please specify at least one song.");
+
+            string temporaryFilesPath = Path.Combine(Server.MapPath("~"), 
+                (ConfigurationManager.AppSettings["TemporaryFilesFolderName"]));
+            string savedFileName = await _musicArchiveService.CreateMusicArchive(songsList, temporaryFilesPath);
+
+            return Json(new { fileName = savedFileName });
         }
 
         public void DownloadMusicArchive(string fileName)
         {
+            if(string.IsNullOrEmpty(fileName))
+                throw new ArgumentException("Cannot find music archive to download because it's name is empty.");
+
             string temporaryFilesPath = Path.Combine(Server.MapPath("~"),
                     (ConfigurationManager.AppSettings["TemporaryFilesFolderName"]));
 
@@ -111,11 +108,6 @@ namespace MusicDownloader.Controllers
                         fileLengthToRead = -1;
                     }
                 }
-            }
-            catch (Exception exception)
-            {
-                _logger.Error(exception.Message, exception);
-                //ToDo return error response
             }
             finally
             {

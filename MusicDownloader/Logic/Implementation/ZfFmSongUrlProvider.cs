@@ -10,7 +10,7 @@ namespace Logic.Implementation
     {
         private const string MusicSearchLink = "https://m.zf.fm/mp3/search?keywords=";
         private readonly HtmlWeb _htmlWeb = new HtmlWeb();
-        
+
         public async Task<string> GetSongUrlAsync(string songName)
         {
             HtmlDocument searchSongsPage = await Task.Run(() => _htmlWeb.Load(MusicSearchLink + songName));

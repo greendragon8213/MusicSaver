@@ -22,7 +22,7 @@ namespace Logic.Implementation
         {
             if (string.IsNullOrEmpty(songName))
             {
-                return null;
+                throw new ArgumentNullException(nameof(songName));
             }
 
             string songUrl = await _songUrlProvider.GetSongUrlAsync(songName);
