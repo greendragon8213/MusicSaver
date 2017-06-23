@@ -87,6 +87,8 @@ namespace Logic.Implementation
                 File.Delete(path);
         }
 
+        #region Private methods
+
         private void AddLogFileToArchive(ZipOutputStream zipStream, StringBuilder logStringBuilder,
             int allSongsCount, int successDownloadedSongsCount)
         {
@@ -105,5 +107,7 @@ namespace Logic.Implementation
             });
             zipStream.Write(readmeFileBytes, 0, readmeFileBytes.Length);
         }
+        
+        #endregion
     }
 }
