@@ -14,14 +14,16 @@ namespace Logic.Implementation
 
         public async Task<string> GetSongUrlAsync(string songName)
         {
-            HtmlDocument searchSongsPage = await Task.Run(() => _htmlWeb.Load(MusicSearchLink + songName));
-            HtmlNode mp3FileFirstNode = searchSongsPage.DocumentNode.SelectSingleNode("//li[@class='tracks-item']");
             try
             {
+                HtmlDocument searchSongsPage = await Task.Run(() => _htmlWeb.Load(MusicSearchLink + songName));
+                HtmlNode mp3FileFirstNode = searchSongsPage.DocumentNode.SelectSingleNode("//li[@class='tracks-item']");
+            
                 return mp3FileFirstNode.GetAttributeValue("data-url", "");
             }
             catch (Exception)
             {
+                //ToDo timeout exception
                 throw new SongNotFoundException(ExceptionMessages.CannotGetSongUrl);
             }
         }
