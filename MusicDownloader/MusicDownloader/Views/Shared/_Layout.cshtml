@@ -4,38 +4,37 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Song downloader</title>
-    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Song downloader", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("FAQ", "FAQ", "Home")</li>
-                    <li>@Html.ActionLink("How it works", "HowItWorks", "Home")</li>
-                </ul>
-            </div>
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            @Html.ActionLink("SONG DOWNLOADER", "Index", "Home", new {area = ""}, new {@class = "navbar-brand"})
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/Home/FAQ"><i class="fa fa-question-circle-o" aria-hidden="true"></i> FAQ</a></li>
+                <li><a href="/Home/HowItWorks"><i class="fa fa-github" aria-hidden="true"></i> How it works</a></li>
+            </ul>
         </div>
     </div>
-
-<div class="container body-content">
-    @RenderBody()
 </div>
-<hr />
+
+    @RenderBody()
+
 <footer>
-    <div class="container">
-        <p>&copy; @DateTime.Now.Year - Song downloader</p>
+    <div class="container footer-container">
+        <p class="pull-left"><i class="fa fa-copyright" aria-hidden="true"></i> @DateTime.Now.Year - Song downloader</p>
+        <p class="pull-right"><a href=""> <i class="fa fa-paper-plane" aria-hidden="true"></i> CONTACT</a></p>
     </div>
 </footer>
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>

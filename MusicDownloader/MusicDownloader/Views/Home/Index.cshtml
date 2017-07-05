@@ -3,28 +3,31 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Download songs from list</h2>
-
-<div class="row">
-    <div class="col-xs-12 col-md-8" id="songs-download-box">
-        <p>Specify the list of songs names you need to download</p>
-        <textarea class="col-xs-12 col-md-12" rows="16" id="songs-names-list" required placeholder="Queen - Bohemian Rhapsody"></textarea>
-        <br/>
-        <br/>
-        <button class="btn btn-lg btn-info" onclick="downloadSongs()">
-            <i class="fa fa-download" aria-hidden="true"></i>
-            Download songs
-        </button>
-        <br/>
-        <br/>
-    </div>
-    <div class="col-xs-12 col-md-8" id="songs-download-ok-result" style="display: none;">
-        <div id="download-should-start-message"></div>
-    </div>
-    <div class="col-xs-12 col-md-8" id="songs-download-error-result" style="display: none;">
-        <div id="error-message"></div>
-    </div>
-    <div class="col-xs-12 col-md-4 additional">
-        <img src="http://i3.kym-cdn.com/photos/images/newsfeed/000/682/637/204.jpg" style="max-width: 100%; display: none">
+<div class="home-page">
+    <div class="container body-content">
+        <h2>Download songs from list</h2>
+        <div class="row">
+            <div class="col-xs-12 col-md-8" id="songs-download-box">
+                <p>Specify the list of songs names you need to download</p>
+                <textarea class="col-xs-12 col-md-12" rows="16" id="songs-names-list" required placeholder="Queen - Bohemian Rhapsody"></textarea>
+                <br />
+                <br />
+                <button class="btn btn-lg btn-info" onclick="downloadSongs()">
+                    <i class="fa fa-download" aria-hidden="true"></i>
+                    Download songs
+                </button>
+                <br />
+                <br />
+            </div>
+            <div class="col-xs-12 col-md-8" id="songs-download-ok-result" style="display: none;">
+                <div id="download-should-start-message"></div>
+            </div>
+            <div class="col-xs-12 col-md-8" id="songs-download-error-result" style="display: none;">
+                <div id="error-message"></div>
+            </div>
+            <div class="col-xs-12 col-md-4 additional">
+                <img src="http://i3.kym-cdn.com/photos/images/newsfeed/000/682/637/204.jpg" style="max-width: 100%; display: none">
+            </div>
+        </div>
     </div>
 </div>
