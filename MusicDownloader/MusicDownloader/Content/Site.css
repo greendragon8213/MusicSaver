@@ -20,12 +20,20 @@ html {
 
 body {
     font-family: "Droid Sans", sans-serif;
-    padding-top: 50px;
+    /*padding-top: 50px;*/
     /*padding-bottom: 20px;*/
+    background-image: url("images/download (1).png");
 }
 
-.navbar .nav > li > a {
+.main-navbar .nav > li > a {
     font-size: 18px;
+    color: #64CCEB;
+}
+
+.nav>li>a:hover, .nav>li>a:focus {
+    border-radius: 20px;
+    color: #203765;
+    background-color: #DBEFDE;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -36,6 +44,7 @@ body {
 
 footer {
     background-color: #F1E9CB;
+    background-color: rgba(241, 233, 203, 0.7);
     position: fixed;
     width: 100%;
     bottom: 0;
@@ -43,18 +52,11 @@ footer {
 
 .footer-container {
     padding: 15px;
-    color: #40C5F1;
-}
-
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+    color: #428bca;
 }
 
 .home-page {
-    background-image: url("images/download.png");
+    /*background-image: url("images/download.png");*/
     padding-bottom: 80px;
 }
 
@@ -63,9 +65,79 @@ textarea {
     min-height: 300px;
     background-color: #ffffff;
     background-color: rgba(255,255,255,0.5);
-    border-color: cadetblue;
+    border-color: powderblue;
 }
 
 .additional {
     padding: 0 15px;
+}
+
+/*Bootstrap override*/
+
+.alert-success {
+    background-color: #dff0d8;
+    background-color: rgba(223, 240, 216, 0.7);
+}
+
+.alert-danger {
+    background-color: rgba(242, 222, 222, 0.7);
+}
+
+.main-navbar {
+    overflow: visible;
+}
+
+.main-navbar-inner {
+    min-height: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: #203748;
+    background-color: rgba(32, 55, 72, 0.75);
+}
+
+.main-navbar .brand {
+    float: left;
+    display: block;
+    padding: 10px 20px;
+    margin-left: -20px;
+    font-size: 24px;
+    font-weight: 200;
+    color: #64CCEB;
+    /*text-shadow: 0 1px 0 #ffffff;*/
+}
+
+.main-navbar .nav.pull-right {
+    float: right;
+    margin-right: 0;
+}
+
+.main-navbar .nav {
+    position: relative;
+    left: 0;
+    display: block;
+    float: left;
+    margin: 0 10px 0 0;
+}
+
+.main-navbar .nav > li {
+    float: left;
+    margin: 20px 5px;
+}
+
+li {
+    line-height: 20px;
+}
+
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+
+.modal-item {
+    margin: 0 0 10px 0;
+    background-color: #E0EFDA;
+}
+
+.modal-item:focus {
+    background-color: #C4EBE1;
 }

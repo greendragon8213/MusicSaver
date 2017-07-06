@@ -22,7 +22,7 @@ function downloadSongs() {
 
             $("#download-should-start-message").html(
                 '<div class="alert alert-success" role="alert">' +
-                '<i class="fa fa-check" aria-hidden="true"></i>' +
+                '<i class="fa fa-check" aria-hidden="true"></i> ' +
                 'Download should start automatically. <br>If download has not started please click '+
                 '<a href="' + downloadArchiveUrl + "?fileName=" + result.fileName + '">here</a>' +
                 '</div>');
@@ -36,7 +36,7 @@ function downloadSongs() {
 
             $("#error-message").html(
                 '<div class="alert alert-danger" role="alert">' +
-                '<i class="fa fa-times" aria-hidden="true"></i>' +
+                '<i class="fa fa-times" aria-hidden="true"></i> ' +
                 '<span class="sr-only">Error:</span>' +
                 JSON.parse(result.responseText).errorMessage +
                 '</div>'
