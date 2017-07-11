@@ -16,6 +16,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 
 html {
     font-family: "Droid Sans", sans-serif;
+    height: 100%;
 }
 
 body {
@@ -23,6 +24,7 @@ body {
     /*padding-top: 50px;*/
     /*padding-bottom: 20px;*/
     background-image: url("images/download (1).png");
+    height: 100%;
 }
 
 .main-navbar .nav > li > a {
@@ -30,7 +32,7 @@ body {
     color: #64CCEB;
 }
 
-.nav>li>a:hover, .nav>li>a:focus {
+.nav>li>a:hover, .nav>li>a:focus, .nav>li>a:active {
     border-radius: 20px;
     color: #203765;
     background-color: #DBEFDE;
@@ -40,6 +42,7 @@ body {
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+    margin: auto;
 }
 
 footer {
@@ -140,4 +143,14 @@ li {
 
 .modal-item:focus {
     background-color: #C4EBE1;
+}
+
+.about-page {
+    height: 70%;
+    display: flex;
+}
+
+.how-it-works-page {
+    height: 70%;
+    display: flex;
 }
