@@ -1,5 +1,9 @@
-﻿var formArchiveUrl = window.location.origin + "/Song/FormMusicArchive";
-var downloadArchiveUrl = window.location.origin + "/Song/DownloadMusicArchive";
+﻿var baseUrl = window.location.origin;
+
+var urls = {
+    formArchiveUrl: baseUrl + "/Song/FormMusicArchive",
+    downloadArchiveUrl: baseUrl + "/Song/DownloadMusicArchive"
+}
 
 function downloadSongs() {
     $('#songs-download-box').block({
@@ -14,7 +18,8 @@ function downloadSongs() {
         type: "POST",
         success: function (result) {
 
-            window.location = downloadArchiveUrl + "?fileName=" + result.fileName;
+            var downloadCreatedArchiveUrl = urls.downloadArchiveUrl + "?fileName=" + result.fileName;
+            window.location = downloadCreatedArchiveUrl;
 
             $("#songs-download-box").css('display', 'none');
             $("#songs-download-error-result").css('display', 'none');
@@ -24,7 +29,7 @@ function downloadSongs() {
                 '<div class="alert alert-success" role="alert">' +
                 '<i class="fa fa-check" aria-hidden="true"></i> ' +
                 'Download should start automatically. <br>If download has not started please click '+
-                '<a href="' + downloadArchiveUrl + "?fileName=" + result.fileName + '">here</a>' +
+                '<a href="' + downloadCreatedArchiveUrl + '">here</a>' +
                 '</div>');
         },
         error: function (result) {
