@@ -21,10 +21,13 @@ html {
 
 body {
     font-family: "Droid Sans", sans-serif;
-    /*padding-top: 50px;*/
-    /*padding-bottom: 20px;*/
-    background-image: url("images/download (1).png");
     height: 100%;
+    
+    background: url("images/download (1).png") no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 .main-navbar .nav > li > a {
@@ -42,7 +45,9 @@ body {
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+    padding-bottom: 80px;
     margin: auto;
+    width: 100%;
 }
 
 footer {
@@ -58,9 +63,21 @@ footer {
     color: #428bca;
 }
 
+
+.about-page {
+    height: 70%;
+    display: flex;
+}
+
+.how-it-works-page {
+    height: 70%;
+    display: flex;
+}
+
 .home-page {
+    height: 70%;
+    display: flex;
     /*background-image: url("images/download.png");*/
-    padding-bottom: 80px;
 }
 
 #songs-names-list {
@@ -83,6 +100,7 @@ footer {
 }
 
 .alert-danger {
+    background-color: #f2dede;
     background-color: rgba(242, 222, 222, 0.7);
 }
 
@@ -129,9 +147,6 @@ footer {
 
 li {
     line-height: 20px;
-}
-
-li {
     display: list-item;
     text-align: -webkit-match-parent;
 }
@@ -143,14 +158,4 @@ li {
 
 .modal-item:focus {
     background-color: #C4EBE1;
-}
-
-.about-page {
-    height: 70%;
-    display: flex;
-}
-
-.how-it-works-page {
-    height: 70%;
-    display: flex;
 }
