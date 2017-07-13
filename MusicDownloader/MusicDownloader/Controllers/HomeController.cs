@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Results;
 using System.Web.Mvc;
+using AutoMapper;
+using log4net;
+using Logic.Abstract;
+using Logic.Models;
 using MusicDownloader.Models;
 using MusicDownloader.Resources;
 
@@ -13,7 +17,15 @@ namespace MusicDownloader.Controllers
 {
     public class HomeController : BaseController
     {
-        // GET: Home
+        private readonly IMailService _mailService;
+        private readonly IMapper _mapper;
+
+        public HomeController(ILog logger, IMailService mailService):base(logger)
+        {
+            _mailService = mailService;
+            _mapper = Mapper.Mapper.MapperInstance;
+        }
+
         public ActionResult Index()
         {
             return View();
@@ -37,6 +49,7 @@ namespace MusicDownloader.Controllers
         [System.Web.Mvc.HttpPost]
         public async Task<ActionResult> SendContactMeMessage([FromBody]ContactMeMessageVM contactMeMessage)
         {
+            _mailService.SendContactMeMessage(_mapper.Map<ContactMeMessageVM, ContactMeMessageDTO>(contactMeMessage));
             //if (songsList == null || songsList.Count == 0)
             //    throw new ArgumentException(ErrorMessages.SongsListIsEmpty);
 
@@ -45,7 +58,7 @@ namespace MusicDownloader.Controllers
             //string savedFileName = await _musicArchiveService.CreateMusicArchive(songsList, temporaryFilesPath);
 
             //return Json(new { fileName = savedFileName });
-            return View();
+            return Json(new {});
         }
     }
 }

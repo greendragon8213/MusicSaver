@@ -2,7 +2,8 @@
 
 var urls = {
     formArchiveUrl: baseUrl + "/Song/FormMusicArchive",
-    downloadArchiveUrl: baseUrl + "/Song/DownloadMusicArchive"
+    downloadArchiveUrl: baseUrl + "/Song/DownloadMusicArchive",
+    sendContactMeUrl: baseUrl + "/Home/SendContactMeMessage"
 }
 
 function downloadSongs() {
@@ -12,7 +13,7 @@ function downloadSongs() {
     });
 
     $.ajax({
-        url: formArchiveUrl,
+        url: urls.formArchiveUrl,
         data: { songsList: GetSongsList() },
         dataType: "json",
         type: "POST",

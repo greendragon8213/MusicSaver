@@ -39,25 +39,29 @@
             <span class="pull-left"><i class="fa fa-copyright" aria-hidden="true"></i> @DateTime.Now.Year - Song downloader
             </span>
             <span class="pull-right">
-                <a href="#myModal" role="button" data-toggle="modal"> <i class="fa fa-paper-plane" aria-hidden="true"></i> CONTACT</a>
+                <a href="#contact-me-modal" role="button" data-toggle="modal"> <i class="fa fa-paper-plane" aria-hidden="true"></i> CONTACT</a>
             </span>
         </div>
     </footer>
 
-    <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div id="contact-me-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="contact-me-modalLabel" aria-hidden="true" style="display: none;">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h3 class="modal-title" id="myModalLabel">
+                    <h3 class="modal-title" id="contact-me-modalLabel">
                         <i class="icon-mail"></i> Contact Me
                     </h3>
                 </div>
                 <div class="modal-body">
-                    <form action="#" style="text-align: center;">
-                        <input type="text" class="form-control modal-item" placeholder="Your Name">
-                        <input type="text" class="form-control modal-item" placeholder="Your Email">
-                        <textarea rows="4" class="form-control modal-item" placeholder="Message"></textarea>
+                    <form action="#" id="contact-me-form" style="text-align: center;">
+                        <input type="text" id="name" class="form-control modal-item" placeholder="Your Name"
+                               required data-validation-required-message="Please enter your name.">
+                        <input type="email" id="email" class="form-control modal-item" placeholder="Your Email"
+                               required data-validation-required-message="Please enter your email.">
+                        <textarea rows="4" id="message" class="form-control modal-item" placeholder="Message"
+                                  required data-validation-required-message="Please enter your message."></textarea>
+                        <div class="request-result"></div>
                         <button type="submit" class="btn btn-info btn-md"><i class="fa fa-paper-plane" aria-hidden="true"></i> SEND</button>
                     </form>
                 </div>
@@ -67,10 +71,16 @@
 
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqBootstrapValidation/1.3.7/jqBootstrapValidation.min.js"></script>
     <script src="~/Scripts/jquery.blockUI.js"></script>
     <script src="~/Scripts/app/main.js"></script>
+    <script src="~/Scripts/app/contact-me-form.js"></script>
     <script>
-        $('#myModal').modal('hide');
+        $('#contact-me-modal').modal('hide');
+
+        $('#contact-me-modal').on('show.bs.modal', function(e) {
+            $('#contact-me-modal').css('display', 'flex');
+        });
     </script>
 </body>
 </html>

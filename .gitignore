@@ -7,3 +7,7 @@ MusicDownloader/Logic/bin/*
 MusicDownloader/Logic/obj/*
 MusicDownloader/MusicDownloader/TemporaryFiles/*
 MusicDownloader/MusicDownloader/Properties/PublishProfiles/*
+MusicDownloader/MusicDownloader/AppSettings.config
+MusicDownloader/DI/bin/*
+MusicDownloader/DI/obj/*
+MusicDownloader/MusicDownloader.sln.DotSettings.user

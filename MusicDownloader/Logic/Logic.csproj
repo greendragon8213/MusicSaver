@@ -48,9 +48,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\IMailService.cs" />
     <Compile Include="Abstract\IMusicArchiveService.cs" />
     <Compile Include="Abstract\ISongDownloader.cs" />
     <Compile Include="Exceptions\SongNotFoundException.cs" />
+    <Compile Include="Implementation\Mails\MailService.cs" />
     <Compile Include="Implementation\MusicArchiveService.cs" />
     <Compile Include="Implementation\ZfFmSongUrlProvider.cs" />
     <Compile Include="Models\ContactMeMessageDTO.cs" />

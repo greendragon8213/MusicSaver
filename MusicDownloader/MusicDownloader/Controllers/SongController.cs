@@ -5,22 +5,24 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Mvc;
+using log4net;
 using Logic.Abstract;
-using Logic.Implementation;
 using MusicDownloader.Resources;
 
 namespace MusicDownloader.Controllers
 {
     public class SongController : BaseController
     {
-        private readonly ISongUrlProvider _songUrlProvider;
-        private readonly ISongDownloader _songDownloader;
+        //private readonly ISongUrlProvider _songUrlProvider;
+        //private readonly ISongDownloader _songDownloader;
         private readonly IMusicArchiveService _musicArchiveService;
-        public SongController()//ToDo DI
+        public SongController(ILog logger, 
+            //ISongUrlProvider songUrlProvider, ISongDownloader songDownloader, 
+            IMusicArchiveService musicArchiveService):base(logger)
         {
-            _songUrlProvider = new ZfFmSongUrlProvider();
-            _songDownloader = new SongDownloader(_songUrlProvider);
-            _musicArchiveService = new MusicArchiveService(_songDownloader);
+            //_songUrlProvider = songUrlProvider;
+            //_songDownloader = songDownloader;
+            _musicArchiveService = musicArchiveService;
         }
 
         [System.Web.Mvc.HttpPost]

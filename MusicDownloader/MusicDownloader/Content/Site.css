@@ -151,6 +151,10 @@ li {
     text-align: -webkit-match-parent;
 }
 
+.modal-dialog {
+    margin: auto;
+}
+
 .modal-item {
     margin: 0 0 10px 0;
     background-color: #E0EFDA;

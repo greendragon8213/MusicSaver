@@ -11,10 +11,11 @@ namespace MusicDownloader.Controllers
     [HandleError]
     public abstract class BaseController : Controller
     {
-        protected static readonly ILog Logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        protected readonly ILog Logger;// = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-        protected BaseController()
+        protected BaseController(ILog logger)
         {
+            Logger = logger;
             SetThreadCultureByRequestHeader();
         }
 
