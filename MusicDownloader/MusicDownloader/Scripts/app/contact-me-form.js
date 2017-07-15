@@ -23,20 +23,18 @@
                 success: function() {
                     $("#contact-me-form input[type='submit']").attr("disabled", true);
                     $('#contact-me-form .request-result').html("<div class='alert alert-success'>");
-                    $('#contact-me-form .request-result > .alert-success').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
-                        .append("</button>");
                     $('#contact-me-form .request-result > .alert-success')
-                        .append("<strong>Success! </strong>Your message has been sent.");
-                    $('#contact-me-form .request-result > .alert-success')
-                        .append('</div>');
+                        .html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>" +
+                            $.localize.data.application.contactMeForm.response.successMessage +
+                            "</div>");
                     $('#contact-me-form').trigger("reset");
                 },
                 error: function() {
                     $('#contact-me-form .request-result').html("<div class='alert alert-danger'>");
-                    $('#contact-me-form .request-result > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
-                        .append("</button>");
-                    $('#contact-me-form .request-result > .alert-danger').append("<strong>Error! </strong>Sorry, something went wrong. Please try again later!");
-                    $('#contact-me-form .request-result > .alert-danger').append('</div>');
+                    $('#contact-me-form .request-result > .alert-danger')
+                        .html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>" +
+                         $.localize.data.application.contactMeForm.response.errorMessage +
+                            "</div>");
                     $('#contact-me-form').trigger("reset");
                 },
                 complete: function() {

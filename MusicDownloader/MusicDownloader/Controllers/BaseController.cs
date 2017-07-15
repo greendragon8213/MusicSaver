@@ -11,7 +11,7 @@ namespace MusicDownloader.Controllers
     [HandleError]
     public abstract class BaseController : Controller
     {
-        protected readonly ILog Logger;// = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        protected readonly ILog Logger;
 
         protected BaseController(ILog logger)
         {
@@ -65,7 +65,6 @@ namespace MusicDownloader.Controllers
             var userCulture = CultureInfo.InvariantCulture;
             try
             {
-                
                 var userLanguages = System.Web.HttpContext.Current.Request.UserLanguages;
                 userCulture = CultureInfo.GetCultureInfo(userLanguages[0]);
             }

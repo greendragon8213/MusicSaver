@@ -41,8 +41,8 @@ body {
     background-color: #DBEFDE;
 }
 
-/* Set padding to keep content from hitting the edges */
 .body-content {
+    text-align: center;
     padding-left: 15px;
     padding-right: 15px;
     padding-bottom: 80px;
@@ -59,10 +59,9 @@ footer {
 }
 
 .footer-container {
-    padding: 15px;
+    padding: 15px 45px;
     color: #428bca;
 }
-
 
 .about-page {
     height: 70%;
@@ -92,7 +91,11 @@ footer {
     padding: 0 15px;
 }
 
-/*Bootstrap override*/
+/*Bootstrap override begin*/
+
+.btn {
+    text-transform: uppercase;
+}
 
 .alert-success {
     background-color: #dff0d8;
@@ -103,6 +106,8 @@ footer {
     background-color: #f2dede;
     background-color: rgba(242, 222, 222, 0.7);
 }
+
+/*end*/
 
 .main-navbar {
     overflow: visible;
@@ -120,11 +125,15 @@ footer {
     float: left;
     display: block;
     padding: 10px 20px;
-    margin-left: -20px;
+    margin-top: 7px;
     font-size: 24px;
     font-weight: 200;
     color: #64CCEB;
     /*text-shadow: 0 1px 0 #ffffff;*/
+}
+
+.main-navbar .brand img {
+    max-height: 50px;
 }
 
 .main-navbar .nav.pull-right {

@@ -127,9 +127,7 @@
       <Name>Logic</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Start\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Unity.Mvc4.README.txt" />
   </ItemGroup>
