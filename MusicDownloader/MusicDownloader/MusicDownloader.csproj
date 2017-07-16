@@ -218,6 +218,36 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ErrorMessages.resx</DependentUpon>
     </Compile>
+    <Compile Include="Resources\Pages\About.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>About.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Pages\ContactMeForm.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ContactMeForm.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Pages\FAQ.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FAQ.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Pages\HowItWorks.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HowItWorks.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Pages\Index.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Index.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Pages\Layout.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Layout.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -250,6 +280,10 @@
       <Project>{f419e75b-ea51-444c-96bd-96ec02eaac93}</Project>
       <Name>DI</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj">
+      <Project>{56632e3a-3dc5-4cc8-85fa-5ba85613c17e}</Project>
+      <Name>Infrastructure</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Logic\Logic.csproj">
       <Project>{06c22953-a356-4dba-9956-2feb3f6bba3b}</Project>
       <Name>Logic</Name>
@@ -268,6 +302,40 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ErrorMessages.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Pages\About.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>About.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Pages\About.ru.resx" />
+    <EmbeddedResource Include="Resources\Pages\About.uk.resx" />
+    <EmbeddedResource Include="Resources\Pages\ContactMeForm.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ContactMeForm.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Pages\ContactMeForm.ru.resx" />
+    <EmbeddedResource Include="Resources\Pages\ContactMeForm.uk.resx" />
+    <EmbeddedResource Include="Resources\Pages\FAQ.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>FAQ.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Pages\HowItWorks.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>HowItWorks.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Pages\HowItWorks.ru.resx" />
+    <EmbeddedResource Include="Resources\Pages\HowItWorks.uk.resx" />
+    <EmbeddedResource Include="Resources\Pages\Index.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Index.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Pages\Index.ru.resx" />
+    <EmbeddedResource Include="Resources\Pages\Index.uk.resx" />
+    <EmbeddedResource Include="Resources\Pages\Layout.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Layout.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Pages\Layout.ru.resx" />
+    <EmbeddedResource Include="Resources\Pages\Layout.uk.resx" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -4,10 +4,11 @@
     }
     
     function downloadSongs() {
+        console.log($.localize.data.application.downloadArchive.loading.title);
         $('#songs-download-box').block({
             message: '<i class="fa fa-spinner fa-spin fa-5x fa-fw" style="color: white"></i><div style="color: white; font-size:16px">' +
-                + '<br>' + $.localize.data.application.downloadArchive.loading.title + '<br>'
-                + $.localize.data.application.downloadArchive.loading.details,
+                '<br>' + $.localize.data.application.downloadArchive.loading.title + '<br>' +
+                $.localize.data.application.downloadArchive.loading.details,
             css: { 'background-color': 'transparent', 'border': 'none' }
         });
 
@@ -29,7 +30,7 @@
                     '<div class="alert alert-success" role="alert">' +
                     '<i class="fa fa-check" aria-hidden="true"></i> ' +
                     $.localize.data.application.downloadArchive.response.downloadShouldStart +
-                    '<a href="' + downloadCreatedArchiveUrl + '">' +
+                    '<a href="' + downloadCreatedArchiveUrl + '"> ' +
                     $.localize.data.application.downloadArchive.response.here +
                     '</a>' +
                     '</div>');

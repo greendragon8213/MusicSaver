@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using Infrastructure
+@using MusicDownloader.Resources.Pages
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -24,12 +27,12 @@
                     <span class="icon-bar"></span>
                 </button>*@
                 <a class="brand" href="/Home/Index"><img src="../Content/images/279683.png" alt="Song downloader"> 
-                    SONG DOWNLOADER
+                    @Constants.ApplicationName
                 </a>
                 <ul class="nav nav-collapse pull-right">
-                    <li><a href="/Home/About"><i class="fa fa-info-circle" aria-hidden="true"></i> About</a></li>
-                    <li><a href="/Home/FAQ"><i class="fa fa-question-circle-o" aria-hidden="true"></i> FAQ</a></li>
-                    <li><a href="/Home/HowItWorks"><i class="fa fa-github" aria-hidden="true"></i> How it works</a></li>
+                    <li><a href="/Home/About"><i class="fa fa-info-circle" aria-hidden="true"></i> @MusicDownloader.Resources.Pages.Layout.AboutLinkText</a></li>
+                    <li><a href="/Home/FAQ"><i class="fa fa-question-circle-o" aria-hidden="true"></i> @MusicDownloader.Resources.Pages.Layout.FaqLinkText</a></li>
+                    <li><a href="/Home/HowItWorks"><i class="fa fa-github" aria-hidden="true"></i> @MusicDownloader.Resources.Pages.Layout.HowItWorksLinkText</a></li>
                 </ul>
                 @*<div class="nav-collapse collapse"></div>*@
             </div>
@@ -40,10 +43,12 @@
 
     <footer>
         <div class="container footer-container">
-            <span class="pull-left"><i class="fa fa-copyright" aria-hidden="true"></i> @DateTime.Now.Year - Song downloader
+            <span class="pull-left"><i class="fa fa-copyright" aria-hidden="true"></i> @DateTime.Now.Year - @Constants.ApplicationName
             </span>
             <span class="pull-right">
-                <a href="#contact-me-modal" role="button" data-toggle="modal"> <i class="fa fa-paper-plane" aria-hidden="true"></i> CONTACT</a>
+                <a href="#contact-me-modal" role="button" data-toggle="modal" style="text-transform: uppercase">
+                    <i class="fa fa-paper-plane" aria-hidden="true"></i> @MusicDownloader.Resources.Pages.Layout.ContactMeLinkText
+                </a>
             </span>
         </div>
     </footer>
@@ -54,19 +59,21 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                     <h3 class="modal-title" id="contact-me-modalLabel">
-                        <i class="icon-mail"></i> Contact Me
+                        <i class="icon-mail"></i> @ContactMeForm.ContactUsHeader
                     </h3>
                 </div>
                 <div class="modal-body">
                     <form action="#" id="contact-me-form" style="text-align: center;">
-                        <input type="text" id="name" class="form-control modal-item" placeholder="Your Name"
-                               required data-validation-required-message="Please enter your name.">
-                        <input type="email" id="email" class="form-control modal-item" placeholder="Your Email"
-                               required data-validation-required-message="Please enter your email.">
-                        <textarea rows="4" id="message" class="form-control modal-item" placeholder="Message"
-                                  required data-validation-required-message="Please enter your message."></textarea>
+                        <input type="text" id="name" class="form-control modal-item" placeholder="@ContactMeForm.YourName"
+                               required>
+                        <input type="email" id="email" class="form-control modal-item" placeholder="@ContactMeForm.YourEmail"
+                               required>
+                        <textarea rows="4" id="message" class="form-control modal-item" placeholder="@ContactMeForm.Message"
+                                  required></textarea>
                         <div class="request-result"></div>
-                        <button type="submit" class="btn btn-info btn-md"><i class="fa fa-paper-plane" aria-hidden="true"></i> SEND</button>
+                        <button type="submit" class="btn btn-info btn-md">
+                            <i class="fa fa-paper-plane" aria-hidden="true"></i> @ContactMeForm.SendButtonText
+                        </button>
                     </form>
                 </div>
             </div>

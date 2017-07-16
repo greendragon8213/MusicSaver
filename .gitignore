@@ -11,3 +11,5 @@ MusicDownloader/MusicDownloader/AppSettings.config
 MusicDownloader/DI/bin/*
 MusicDownloader/DI/obj/*
 MusicDownloader/MusicDownloader.sln.DotSettings.user
+MusicDownloader/Infrastructure/obj/*
+MusicDownloader/Infrastructure/bin/*

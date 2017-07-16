@@ -1,16 +1,17 @@
-﻿
+﻿@using Infrastructure
+@using MusicDownloader.Resources.Pages
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = $"Index - {Constants.ApplicationName}";
 }
 
-<script src="~/Scripts/app/main.js"></script>
+<script src="~/Scripts/app/index.js"></script>
 
 <div class="home-page">
     <div class="container body-content">
-        <h2>Download songs from list</h2>
+        <h2>@Index.DownloadSongs</h2>
         <div class="row">
             <div class="col-xs-12 col-md-12" id="songs-download-box">
-                <p>Specify the list of songs names you need to download</p>
+                <p>@Index.SpecifyNamesToDownload</p>
 
                 <div class="row">
                     <div class="col-xs-1 col-md-2"></div>
@@ -21,7 +22,7 @@
                 <br/>
                 <button class="btn btn-lg btn-info" onclick="index.downloadSongs()">
                     <i class="fa fa-download" aria-hidden="true"></i>
-                    Download songs
+                    @Index.DownloadSongsButtonText
                 </button>
                 <br/>
             </div>

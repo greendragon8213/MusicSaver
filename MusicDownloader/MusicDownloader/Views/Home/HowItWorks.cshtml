@@ -1,14 +1,14 @@
-﻿
+﻿@using Infrastructure
+@using MusicDownloader.Resources.Pages
 @{
-    ViewBag.Title = "HowItWorks";
+    ViewBag.Title = $"How it works - {Constants.ApplicationName}";
 }
 
 <div class="how-it-works-page">
     <div class="container body-content" style="text-align: center">
-        <h2><i class="fa fa-github" aria-hidden="true"></i> Want to know how it works?</h2>
+        <h2><i class="fa fa-github" aria-hidden="true"></i> @HowItWorks.WantToKnowHowitWorks</h2>
         <p>
-            It searches for songs you specified and returns single zip-archive with music files. <br>
-            To see details, visit the <a href="https://github.com/greendragon8213/MusicSaver">github repository</a>.
+            @Html.Raw(HowItWorks.Description)
         </p>
     </div>
 </div>

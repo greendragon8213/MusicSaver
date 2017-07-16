@@ -30,6 +30,10 @@ body {
     background-size: cover;
 }
 
+.brand {
+    text-transform: uppercase;
+}
+
 .main-navbar .nav > li > a {
     font-size: 18px;
     color: #64CCEB;
@@ -166,9 +170,9 @@ li {
 
 .modal-item {
     margin: 0 0 10px 0;
-    background-color: #E0EFDA;
+    background-color: lemonchiffon;
 }
 
 .modal-item:focus {
-    background-color: #C4EBE1;
+    background-color: lightcyan;
 }
