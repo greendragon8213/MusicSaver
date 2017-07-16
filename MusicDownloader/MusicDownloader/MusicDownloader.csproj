@@ -176,6 +176,7 @@
     <Content Include="AppSettings.config" />
     <Content Include="fonts\DroidSans-Bold.ttf" />
     <Content Include="fonts\DroidSans.ttf" />
+    <Content Include="log4net.config" />
     <None Include="Properties\PublishProfiles\greendragon.pubxml" />
     <Content Include="Scripts\app\localization\application-en.json" />
     <Content Include="Scripts\app\localization\application-ru.json" />
