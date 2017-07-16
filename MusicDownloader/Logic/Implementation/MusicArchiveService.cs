@@ -44,7 +44,8 @@ namespace Logic.Implementation
                     {
                         var fileEntry = new ZipEntry(Path.GetFileName(song.FullName + song.FileExtension))
                         {
-                            Size = song.EntryBytes.Length
+                            Size = song.EntryBytes.Length,
+                            IsUnicodeText = true
                         };
 
                         zipStream.PutNextEntry(fileEntry);

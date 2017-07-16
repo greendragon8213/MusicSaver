@@ -48,8 +48,8 @@ namespace MusicDownloader.Controllers
 
             Stream musicStream = _musicArchiveService.GetStream(Path.Combine(temporaryFilesPath, fileName));
             DownloadStream(musicStream);
-
             musicStream = null;
+
             _musicArchiveService.DeleteFile(Path.Combine(temporaryFilesPath, fileName));
         }
         
