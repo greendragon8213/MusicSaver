@@ -99,8 +99,8 @@ namespace Logic.Implementation
                 logStringBuilder.AppendLine(LogText.AllSongsDownloadedSuccessfully);
             }
 
-            logStringBuilder.AppendLine($"{LogText.SongsDownloaded} {successDownloadedSongsCount}/{allSongsCount}");
-
+            logStringBuilder.Insert(0, $"{LogText.SongsDownloaded} {successDownloadedSongsCount}/{allSongsCount}{Environment.NewLine}");
+            
             //Adding download log
             byte[] readmeFileBytes = Encoding.Unicode.GetBytes(logStringBuilder.ToString());
             zipStream.PutNextEntry(new ZipEntry(Path.GetFileName("log.txt"))

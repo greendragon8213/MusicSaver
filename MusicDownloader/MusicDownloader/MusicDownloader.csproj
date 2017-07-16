@@ -165,6 +165,7 @@
     <Content Include="Content\images\download %281%29.png" />
     <Content Include="Content\images\download %284%29.png" />
     <Content Include="Content\images\download.png" />
+    <Content Include="Content\images\logo1.1.png" />
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
