@@ -117,11 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="WantToKnowHowitWorks" xml:space="preserve">
-    <value>Хотите знать, как это работает?</value>
+  <data name="UserGuide" xml:space="preserve">
+    <value>Как пользоватся сервисом?</value>
   </data>
   <data name="Description" xml:space="preserve">
-    <value>Этот сайт был создан для загрузки нескольких песен по одному запросу. &lt;br /&gt;
-Он ищет песни, которые вы указали, и возвращает один zip-архив с музыкальными файлами. &lt;br&gt;</value>
+    <value>1. В поле ввода пишем название исполнителя и песни.
+2. Каждая песня должна быть в отдельной строке.
+3. Нажимаем кнопку скачивания.
+4. Процес поиска начался, он может занять несколько минут, в зависимости от количества песен.
+5. По завершении поиска начнеться автоматическая загрузка .zip архива с файлами .mp3 и текстовым документом, в котором будет указано список найденых песен.</value>
   </data>
 </root>

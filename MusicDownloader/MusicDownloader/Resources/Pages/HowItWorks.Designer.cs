@@ -61,8 +61,12 @@ namespace MusicDownloader.Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This site was made to download multiple songs by a single request. &lt;br /&gt;
-        ///It searches for songs you specified and returns single zip-archive with music files. &lt;br&gt;.
+        ///   Looks up a localized string similar to 
+        ///1. In the input field we write the name of the artist and the song.
+        ///2. Each song should be on a separate line.
+        ///3. Click the download button.
+        ///4. The search process has started, it may take several minutes, depending on the number of songs.
+        ///5. When the search is complete, the .zip archive will automatically download .mp3 files with .mp3 files and a text document that lists the songs found..
         /// </summary>
         public static string Description {
             get {
@@ -71,11 +75,11 @@ namespace MusicDownloader.Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Want to know how it works?.
+        ///   Looks up a localized string similar to How to use the free music downloader?.
         /// </summary>
-        public static string WantToKnowHowitWorks {
+        public static string UserGuide {
             get {
-                return ResourceManager.GetString("WantToKnowHowitWorks", resourceCulture);
+                return ResourceManager.GetString("UserGuide", resourceCulture);
             }
         }
     }

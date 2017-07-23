@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="DownloadSongs" xml:space="preserve">
-    <value>Скачать песни из списка</value>
+    <value>Скачать песни</value>
   </data>
   <data name="SpecifyNamesToDownload" xml:space="preserve">
     <value>Укажите список имен песен, которые необходимо загрузить</value>

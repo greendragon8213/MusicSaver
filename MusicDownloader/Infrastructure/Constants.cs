@@ -2,6 +2,6 @@
 {
     public static class Constants
     {
-        public const string ApplicationName = "Song downloader";
+        public const string ApplicationName = "Free Song Downloader";
     }
 }

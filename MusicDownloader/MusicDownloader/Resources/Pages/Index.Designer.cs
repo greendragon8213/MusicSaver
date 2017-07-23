@@ -61,7 +61,7 @@ namespace MusicDownloader.Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Download songs from list.
+        ///   Looks up a localized string similar to Download songs.
         /// </summary>
         public static string DownloadSongs {
             get {
