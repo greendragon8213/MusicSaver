@@ -61,25 +61,56 @@ namespace MusicDownloader.Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 
-        ///1. In the input field we write the name of the artist and the song.
-        ///2. Each song should be on a separate line.
-        ///3. Click the download button.
-        ///4. The search process has started, it may take several minutes, depending on the number of songs.
-        ///5. When the search is complete, the .zip archive will automatically download .mp3 files with .mp3 files and a text document that lists the songs found..
+        ///   Looks up a localized string similar to Click the download button..
         /// </summary>
-        public static string Description {
+        public static string ClickDownloadButton {
             get {
-                return ResourceManager.GetString("Description", resourceCulture);
+                return ResourceManager.GetString("ClickDownloadButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Each song should be on a separate line..
+        /// </summary>
+        public static string EachSongOnSeparateLine {
+            get {
+                return ResourceManager.GetString("EachSongOnSeparateLine", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The search process has started, it may take several minutes, depending on the number of songs..
+        /// </summary>
+        public static string SearchHasStarted {
+            get {
+                return ResourceManager.GetString("SearchHasStarted", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to How to use the free music downloader?.
         /// </summary>
-        public static string UserGuide {
+        public static string UserGuideTitle {
             get {
-                return ResourceManager.GetString("UserGuide", resourceCulture);
+                return ResourceManager.GetString("UserGuideTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to When the search is completed, the .zip archive with files and a text document that lists not found the songs will automatically be downloaded..
+        /// </summary>
+        public static string WhenSearchIsCompleted {
+            get {
+                return ResourceManager.GetString("WhenSearchIsCompleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to In the input field we write the name of the artist and the song..
+        /// </summary>
+        public static string WriteSongsIntoInput {
+            get {
+                return ResourceManager.GetString("WriteSongsIntoInput", resourceCulture);
             }
         }
     }

@@ -160,6 +160,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Faq.css" />
     <Content Include="Content\images\279683.png" />
     <Content Include="Content\images\download %281%29 smaller.png" />
     <Content Include="Content\images\download %281%29.png" />
@@ -231,7 +232,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ContactMeForm.resx</DependentUpon>
     </Compile>
-    <Compile Include="Resources\Pages\FAQ.Designer.cs">
+    <Compile Include="Resources\Pages\FAQ1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>FAQ.resx</DependentUpon>
@@ -319,8 +320,10 @@
     <EmbeddedResource Include="Resources\Pages\ContactMeForm.uk.resx" />
     <EmbeddedResource Include="Resources\Pages\FAQ.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>FAQ.Designer.cs</LastGenOutput>
+      <LastGenOutput>FAQ1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Pages\FAQ.ru.resx" />
+    <EmbeddedResource Include="Resources\Pages\FAQ.uk.resx" />
     <EmbeddedResource Include="Resources\Pages\HowItWorks.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>HowItWorks.Designer.cs</LastGenOutput>

@@ -129,4 +129,7 @@
   <data name="ContactMeLinkText" xml:space="preserve">
     <value>Написати нам</value>
   </data>
+  <data name="AppLinkText" xml:space="preserve">
+    <value>Програма</value>
+  </data>
 </root>

@@ -75,11 +75,11 @@ namespace MusicDownloader.Resources.Pages {
         ///We spend a lot of time looking for songs that we like.
         ///&lt;/p&gt;
         ///&lt;p&gt;
-        /// I have several online playlists that have more than 3,000 songs. Also I often need my music offline.
+        /// I have several online playlists that have more than 3,000 songs. Also, I often need my music offline.
         ///I did not even consider the option of searching and downloading each song myself, so I decided to create a service that could help me to solve this problem.
         ///&lt;/p&gt;
         ///&lt;p&gt;
-        /// Here I share the results of my work. :) Th [rest of string was truncated]&quot;;.
+        /// Here I share the results of my work. :) T [rest of string was truncated]&quot;;.
         /// </summary>
         public static string Text {
             get {

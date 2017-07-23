@@ -97,15 +97,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="UserGuide" xml:space="preserve">
+  <data name="UserGuideTitle" xml:space="preserve">
     <value>How to use the free music downloader?</value>
   </data>
-  <data name="Description" xml:space="preserve">
-    <value>
-1. In the input field we write the name of the artist and the song.
-2. Each song should be on a separate line.
-3. Click the download button.
-4. The search process has started, it may take several minutes, depending on the number of songs.
-5. When the search is complete, the .zip archive will automatically download .mp3 files with .mp3 files and a text document that lists the songs found.</value>
+  <data name="WriteSongsIntoInput" xml:space="preserve">
+    <value>In the input field we write the name of the artist and the song.</value>
+  </data>
+  <data name="EachSongOnSeparateLine" xml:space="preserve">
+    <value>Each song should be on a separate line.</value>
+  </data>
+  <data name="ClickDownloadButton" xml:space="preserve">
+    <value>Click the download button.</value>
+  </data>
+  <data name="SearchHasStarted" xml:space="preserve">
+    <value>The search process has started, it may take several minutes, depending on the number of songs.</value>
+  </data>
+  <data name="WhenSearchIsCompleted" xml:space="preserve">
+    <value>When the search is completed, the .zip archive with files and a text document that lists not found the songs will automatically be downloaded.</value>
   </data>
 </root>

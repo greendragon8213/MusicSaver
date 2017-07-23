@@ -1,16 +1,16 @@
 ﻿@using Infrastructure
 @using MusicDownloader.Resources.Pages
 @{
-    ViewBag.Title = "About";
+    ViewBag.Title = MusicDownloader.Resources.Pages.Layout.AboutLinkText;
 }
 
 <div class="about-page">
     <div class="container body-content" style="text-align: center">
         <h2><i class="fa fa-info-circle" aria-hidden="true"></i> @string.Format(About.Header, Constants.ApplicationName)</h2>
-        <div style="text-align: justify; text-indent: 2em; padding: 0 15%;">
+        <div class="about-content">
             @Html.Raw(string.Format(About.Text,
-                $"<a href=\"/Home/HowItWorks\">{MusicDownloader.Resources.Pages.Layout.HowItWorksLinkText}</a>",
-                $"<a href=\"#contact-me-modal\" data-toggle=\"modal\">{MusicDownloader.Resources.Pages.Layout.ContactMeLinkText}</a>"))
+                $"<a href=\"/Home/HowItWorks\">{MusicDownloader.Resources.Pages.Layout.HowItWorksLinkText.ToLowerInvariant()}</a>",
+                $"<a href=\"#contact-me-modal\" data-toggle=\"modal\">{MusicDownloader.Resources.Pages.Layout.ContactMeLinkText.ToLowerInvariant()}</a>"))
         </div>
     </div>
 </div>
