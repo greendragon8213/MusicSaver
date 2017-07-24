@@ -97,11 +97,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="WantToKnowHowitWorks" xml:space="preserve">
-    <value>Want to know how it works?</value>
+  <data name="UserGuideTitle" xml:space="preserve">
+    <value>How to use the free music downloader?</value>
   </data>
-  <data name="Description" xml:space="preserve">
-    <value>This site was made to download multiple songs by a single request. &lt;br /&gt;
-It searches for songs you specified and returns single zip-archive with music files. &lt;br&gt;</value>
+  <data name="WriteSongsIntoInput" xml:space="preserve">
+    <value>In the input field we write the name of the artist and the song.</value>
+  </data>
+  <data name="EachSongOnSeparateLine" xml:space="preserve">
+    <value>Each song should be on a separate line.</value>
+  </data>
+  <data name="ClickDownloadButton" xml:space="preserve">
+    <value>Click the download button.</value>
+  </data>
+  <data name="SearchHasStarted" xml:space="preserve">
+    <value>The search process has started, it may take several minutes, depending on the number of songs.</value>
+  </data>
+  <data name="WhenSearchIsCompleted" xml:space="preserve">
+    <value>When the search is completed, the .zip archive with files and a text document that lists not found the songs will automatically be downloaded.</value>
   </data>
 </root>

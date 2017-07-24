@@ -1,15 +1,21 @@
 ﻿@using Infrastructure
 @using MusicDownloader.Resources.Pages
 @{
-    ViewBag.Title = $"How it works - {Constants.ApplicationName}";
+    ViewBag.Title = MusicDownloader.Resources.Pages.Layout.HowItWorksLinkText;
 }
 
 <div class="how-it-works-page">
     <div class="container body-content" style="text-align: center">
-        <h2><i class="fa fa-github" aria-hidden="true"></i> @HowItWorks.WantToKnowHowitWorks</h2>
-        <p>
-            @Html.Raw(HowItWorks.Description)
-        </p>
+        <h2><i class="fa fa-book" aria-hidden="true"></i> @HowItWorks.UserGuideTitle</h2>
+        <div class="how-it-works-content">
+            <ol>
+                <li>@HowItWorks.WriteSongsIntoInput</li>
+                <li>@HowItWorks.EachSongOnSeparateLine</li>
+                <li>@HowItWorks.WhenSearchIsCompleted</li>
+                <li>@HowItWorks.SearchHasStarted</li>
+                <li>@HowItWorks.WhenSearchIsCompleted</li>
+            </ol>
+        </div>
     </div>
 </div>
 

@@ -109,4 +109,7 @@
   <data name="ContactMeLinkText" xml:space="preserve">
     <value>Contact us</value>
   </data>
+  <data name="AppLinkText" xml:space="preserve">
+    <value>App</value>
+  </data>
 </root>

@@ -70,7 +70,16 @@ namespace MusicDownloader.Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to If you need to download lots of music you don&apos;t have to search for every separate song.&lt;br /&gt;This site was made to simplify this process. &lt;br /&gt;You just specify once list of songs and it downloads all of them.&lt;br/&gt;This site is absolutly free to use.&lt;br /&gt;.
+        ///   Looks up a localized string similar to &lt;p&gt;
+        /// Today, in the world filled with portable devices, music has become an indispensable part of everyday life for many people.
+        ///We spend a lot of time looking for songs that we like.
+        ///&lt;/p&gt;
+        ///&lt;p&gt;
+        /// I have several online playlists that have more than 3,000 songs. Also, I often need my music offline.
+        ///I did not even consider the option of searching and downloading each song myself, so I decided to create a service that could help me to solve this problem.
+        ///&lt;/p&gt;
+        ///&lt;p&gt;
+        /// Here I share the results of my work. :) T [rest of string was truncated]&quot;;.
         /// </summary>
         public static string Text {
             get {

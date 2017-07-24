@@ -72,9 +72,24 @@ footer {
     display: flex;
 }
 
+.about-content {
+    text-align: justify; 
+    text-indent: 2em; 
+    padding: 0 15%;
+}
+
 .how-it-works-page {
     height: 70%;
     display: flex;
+}
+
+.how-it-works-content {
+    text-align: justify;
+    padding: 0 15%;
+}
+
+.how-it-works-content > ol > li {
+    margin-bottom: 5px;
 }
 
 .home-page {

@@ -1,7 +1,58 @@
-﻿
+﻿@using MusicDownloader.Resources.Pages
+
 @{
-    ViewBag.Title = "FAQ";
+    ViewBag.Title = FAQ.FaqTitle;
 }
+<link rel="stylesheet" type="text/css" href="~/Content/Faq.css"/>
 
-<h2>FAQ</h2>
-
+<div class="faq-page">
+    <div class="container body-content" style="text-align: center">
+        <h2>
+            <i class="fa fa-question-circle-o" aria-hidden="true"></i> @FAQ.FaqTitle</h2>
+        <div class="faq-content">
+            <div class="panel-group" id="accordion">
+                <!--<div class="faqHeader">General questions</div>-->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#download-from-vk">@FAQ.Question_HowToDownloadFromVk</a>
+                        </h4>
+                    </div>
+                    <div id="download-from-vk" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            @Html.Raw(FAQ.Answer_HowToDownloadFromVk)
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#download-all-from-vk">@FAQ.Question_HowToDownloadAllFromVk</a>
+                        </h4>
+                    </div>
+                    <div id="download-all-from-vk" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            @Html.Raw(string.Format(FAQ.Answer_HowToDownloadAllFromVk,
+                                $"<a href=\"/Home/App\">{MusicDownloader.Resources.Pages.Layout.AppLinkText.ToLowerInvariant()}</a>"
+                                ))
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#too-long-downloads">@FAQ.Question_WhyIsBeingDownloadingLong</a>
+                        </h4>
+                    </div>
+                    <div id="too-long-downloads" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            @Html.Raw(string.Format(FAQ.Answer_WhyIsBeingDownloadingLong,
+                                $"<a href=\"/Home/App\">{MusicDownloader.Resources.Pages.Layout.AppLinkText.ToLowerInvariant()}</a>"
+                                ))
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

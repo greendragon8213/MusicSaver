@@ -117,22 +117,30 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="UserGuideTitle" xml:space="preserve">
-    <value>Как пользоватся сервисом?</value>
+  <data name="Question_HowToDownloadFromVk" xml:space="preserve">
+    <value>Як завантажити музику з vk.com?</value>
   </data>
-  <data name="WriteSongsIntoInput" xml:space="preserve">
-    <value>В поле ввода пишем название исполнителя и песни.</value>
+  <data name="Answer_HowToDownloadFromVk" xml:space="preserve">
+    <value>1). Перейдіть на свою (або чужу) сторінку з музикою; &lt;br&gt;
+2). Виберіть усі потрібні пісні (не турбуйтеся про тривалість, наш вервіс може розпізнавати та проігнорувати її, якщо вона скопіювалась); &lt;br&gt;
+3). Вставте список пісень у форму на головній сторінці нашого сервісу та натисніть "завантажити". &lt;br&gt;</value>
   </data>
-  <data name="EachSongOnSeparateLine" xml:space="preserve">
-    <value>Каждая песня должна быть в отдельной строке.</value>
+  <data name="Question_HowToDownloadAllFromVk" xml:space="preserve">
+    <value>Як завантажити всю мою (або чиюсь) музику з vk.com?</value>
   </data>
-  <data name="ClickDownloadButton" xml:space="preserve">
-    <value>Нажимаем кнопку скачивания.</value>
+  <data name="Answer_HowToDownloadAllFromVk" xml:space="preserve">
+    <value>1). Якщо вам потрібно завантажити весь список музики, прокрутіть вниз сторінку vk з музикою і виберіть усі пісні; &lt;br&gt;
+2). Якщо є багато пісень, то краще б завантажити їх групами з 100 пісень; &lt;br&gt;
+3). Щоб завантажувати не групами з 100 пісень, просто використовуйте {0}. &lt;br&gt;</value>
   </data>
-  <data name="SearchHasStarted" xml:space="preserve">
-    <value>Процесc поиска начался, он может занять несколько минут, в зависимости от количества песен.</value>
+  <data name="Question_WhyIsBeingDownloadingLong" xml:space="preserve">
+    <value>Чому моя музика завантажується занадто довго?</value>
   </data>
-  <data name="WhenSearchIsCompleted" xml:space="preserve">
-    <value>По завершении поиска начнётся автоматическая загрузка .zip архива с файлами и текстовым документом, в котором будет указано список ненайденных песен.</value>
+  <data name="Answer_WhyIsBeingDownloadingLong" xml:space="preserve">
+    <value>Це трапляється, коли ви намагаєтеся завантажити забагато пісень. Завантажте їх групами із 100 пісень. &lt;br&gt;
+Якщо ви хочете завантажити все, скористайтеся {0} &lt;br&gt;</value>
+  </data>
+  <data name="FaqTitle" xml:space="preserve">
+    <value>FAQ</value>
   </data>
 </root>

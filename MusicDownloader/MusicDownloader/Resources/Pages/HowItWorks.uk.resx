@@ -117,11 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="WantToKnowHowitWorks" xml:space="preserve">
-    <value>Хочете знати, як це працює?</value>
+  <data name="UserGuideTitle" xml:space="preserve">
+    <value>Як користуватися сервісом?</value>
   </data>
-  <data name="Description" xml:space="preserve">
-    <value>Цей сайт був зроблений для завантаження декількох пісень одним запитом. &lt;br /&gt;
-Він шукає пісні, які ви вказали, і повертає один zip-архів з музичними файлами. &lt;br&gt;</value>
+  <data name="WriteSongsIntoInput" xml:space="preserve">
+    <value>У полі введення пишемо назву виконавця і пісні.</value>
+  </data>
+  <data name="EachSongOnSeparateLine" xml:space="preserve">
+    <value>Кожна пісня повинна бути в окремому рядку.</value>
+  </data>
+  <data name="ClickDownloadButton" xml:space="preserve">
+    <value>Натискаємо кнопку завантаження.</value>
+  </data>
+  <data name="SearchHasStarted" xml:space="preserve">
+    <value>Процес пошуку почався, він може зайняти кілька хвилин, в залежності від кількості пісень.</value>
+  </data>
+  <data name="WhenSearchIsCompleted" xml:space="preserve">
+    <value>По завершенні пошуку почнеться автоматичне завантаження .zip архіву з файлами і текстовим документом, в якому буде вказано список незнайдених пісень.</value>
   </data>
 </root>
