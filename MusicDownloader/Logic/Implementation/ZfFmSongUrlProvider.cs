@@ -1,26 +1,30 @@
 ﻿using System;
+using System.Threading.Tasks;
 using HtmlAgilityPack;
 using Logic.Abstract;
 using Logic.Exceptions;
+using Logic.Resources;
 
 namespace Logic.Implementation
 {
     public class ZfFmSongUrlProvider : ISongUrlProvider
     {
         private const string MusicSearchLink = "https://m.zf.fm/mp3/search?keywords=";
-        //private const string BaseUrl = "https://zf.fm";
-        
-        public string GetSongUrl(string songName)
+        private readonly HtmlWeb _htmlWeb = new HtmlWeb();
+
+        public async Task<string> GetSongUrlAsync(string songName)
         {
-            HtmlDocument searchSongsPage = new HtmlWeb().Load(MusicSearchLink + songName);
-            HtmlNode mp3FileFirstNode = searchSongsPage.DocumentNode.SelectSingleNode("//li[@class='tracks-item']");
             try
             {
+                HtmlDocument searchSongsPage = await Task.Run(() => _htmlWeb.Load(MusicSearchLink + songName));
+                HtmlNode mp3FileFirstNode = searchSongsPage.DocumentNode.SelectSingleNode("//li[@class='tracks-item']");
+            
                 return mp3FileFirstNode.GetAttributeValue("data-url", "");
             }
             catch (Exception)
             {
-                throw new SongNotFoundException("Cannot get song url.");
+                //ToDo timeout exception
+                throw new SongNotFoundException(ExceptionMessages.CannotGetSongUrl);
             }
         }
     }

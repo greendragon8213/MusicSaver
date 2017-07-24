@@ -5,3 +5,12 @@ MusicDownloader/MusicDownloader/bin/*
 MusicDownloader/MusicDownloader/obj/*
 MusicDownloader/Logic/bin/*
 MusicDownloader/Logic/obj/*
+MusicDownloader/MusicDownloader/TemporaryFiles/*
+MusicDownloader/MusicDownloader/Properties/PublishProfiles/*
+MusicDownloader/MusicDownloader/AppSettings.config
+MusicDownloader/DI/bin/*
+MusicDownloader/DI/obj/*
+MusicDownloader/MusicDownloader.sln.DotSettings.user
+MusicDownloader/Infrastructure/obj/*
+MusicDownloader/Infrastructure/bin/*
+MusicDownloader/.vs/MusicDownloader/v14/.suo

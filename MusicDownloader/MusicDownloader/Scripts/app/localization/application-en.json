@@ -1,0 +1,20 @@
+﻿{
+  "contactMeForm": {
+    "response": {
+      "errorMessage": "Sorry, something went wrong. Please try again later!",
+      "successMessage": "Thank you, your message has been sent."
+    }
+  },
+
+  "downloadArchive": {
+    "loading": {
+      "details": "This process may take a few minutes. <br>Please wait.",
+      "title": "Preparing files... "
+    },
+    "response": {
+      "downloadShouldStart": "Download should start automatically. <br>If download has not started please click",
+      "here": "here.",
+      "error": "Error:"
+    }
+  }
+}

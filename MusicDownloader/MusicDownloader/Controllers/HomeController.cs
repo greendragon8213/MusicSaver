@@ -1,25 +1,51 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Web;
+﻿using System.Threading.Tasks;
+using System.Web.Http;
 using System.Web.Mvc;
-using ICSharpCode.SharpZipLib.Zip;
-using Logic;
-using Logic.Exceptions;
-using Logic.Implementation;
+using AutoMapper;
+using log4net;
+using Logic.Abstract;
 using Logic.Models;
+using MusicDownloader.Models;
 
 namespace MusicDownloader.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
-        // GET: Home
+        private readonly IMailService _mailService;
+        private readonly IMapper _mapper;
+
+        public HomeController(ILog logger, IMailService mailService):base(logger)
+        {
+            _mailService = mailService;
+            _mapper = Mapper.Mapper.MapperInstance;
+        }
+
         public ActionResult Index()
         {
             return View();
+        }
+
+        public ActionResult HowItWorks()
+        {
+            return View();
+        }
+
+        public ActionResult FAQ()
+        {
+            return View();
+        }
+
+        public ActionResult About()
+        {
+            return View();
+        }
+
+        [System.Web.Mvc.HttpPost]
+        public async Task<ActionResult> SendContactMeMessage([FromBody]ContactMeMessageVM contactMeMessage)
+        {
+            _mailService.SendContactMeMessage(_mapper.Map<ContactMeMessageVM, ContactMeMessageDTO>(contactMeMessage));
+            
+            return Json(new {});
         }
     }
 }
