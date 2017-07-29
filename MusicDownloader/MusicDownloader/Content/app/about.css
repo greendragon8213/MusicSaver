@@ -1,0 +1,10 @@
+﻿.about-page {
+    height: 70%;
+    display: flex;
+}
+
+.about-content {
+    text-align: justify; 
+    text-indent: 2em; 
+    padding: 0 15%;
+}

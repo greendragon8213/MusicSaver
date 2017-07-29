@@ -23,7 +23,7 @@ body {
     font-family: "Droid Sans", sans-serif;
     height: 100%;
     
-    background: url("images/download (1) smaller.png") no-repeat center center fixed; 
+    background: url("../Content/app/images/download (1) smaller.png") no-repeat center center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -65,49 +65,6 @@ footer {
 .footer-container {
     padding: 15px 45px;
     color: #428bca;
-}
-
-.about-page {
-    height: 70%;
-    display: flex;
-}
-
-.about-content {
-    text-align: justify; 
-    text-indent: 2em; 
-    padding: 0 15%;
-}
-
-.how-it-works-page {
-    height: 70%;
-    display: flex;
-}
-
-.how-it-works-content {
-    text-align: justify;
-    padding: 0 15%;
-}
-
-.how-it-works-content > ol > li {
-    margin-bottom: 5px;
-}
-
-.home-page {
-    height: 70%;
-    display: flex;
-    /*background-image: url("images/download.png");*/
-}
-
-#songs-names-list {
-    max-width: 100%;
-    min-height: 300px;
-    background-color: #ffffff;
-    background-color: rgba(255,255,255,0.5);
-    border-color: powderblue;
-}
-
-.additional {
-    padding: 0 15px;
 }
 
 /*Bootstrap override begin*/
