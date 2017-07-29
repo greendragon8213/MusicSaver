@@ -12,8 +12,9 @@ html {
 
 body {
     font-family: @site-fonts;
-    height: 100%;
-    
+    font-size: @site-font-size;
+    line-height: @site-line-height;
+    height: 100%;    
     background: url("../Content/app/images/download (1) smaller.png") no-repeat center center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -26,6 +27,9 @@ body {
 }
 
 @nav-menu-item-light-hover-color: #DBEFDE;
+
+@footer-top-padding: 15px;
+@footer-bottom-padding: 15px;
 
 .main-navbar .nav > li > a {
     font-size: 18px;
@@ -42,7 +46,7 @@ body {
     text-align: center;
     padding-left: 15px;
     padding-right: 15px;
-    padding-bottom: 80px;
+    padding-bottom: @footer-bottom-padding + @footer-top-padding + @site-line-height*@site-font-size + 10px;
     margin: auto;
     width: 100%;
 }
@@ -55,7 +59,7 @@ footer {
 }
 
 .footer-container {
-    padding: 15px 45px;
+    padding: @footer-top-padding 45px @footer-bottom-padding 45px;
     color: @light-orange-inverse-color;
 }
 
