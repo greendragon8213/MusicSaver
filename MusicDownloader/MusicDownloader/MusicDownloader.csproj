@@ -179,19 +179,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Content\app\about.less" />
-    <None Include="Content\app\how-it-works.less" />
-    <None Include="Content\app\index.less" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <None Include="Content\app\faq.less" />
     <Content Include="Content\app\images\download %281%29 smaller.png" />
     <Content Include="Content\app\images\download %281%29.png" />
     <Content Include="Content\app\images\download %284%29.png" />
     <Content Include="Content\app\images\download.png" />
     <Content Include="Content\app\images\logo1.1.png" />
     <Content Include="Content\app\shared.less" />
-    <None Include="Content\app\site.less" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\app\constants.js" />
@@ -204,6 +199,11 @@
     <Content Include="fonts\DroidSans-Bold.ttf" />
     <Content Include="fonts\DroidSans.ttf" />
     <Content Include="log4net.config" />
+    <Content Include="Content\app\about.less" />
+    <Content Include="Content\app\site.less" />
+    <Content Include="Content\app\index.less" />
+    <Content Include="Content\app\how-it-works.less" />
+    <Content Include="Content\app\faq.less" />
     <None Include="Properties\PublishProfiles\greendragon.pubxml" />
     <Content Include="Scripts\app\localization\application-en.json" />
     <Content Include="Scripts\app\localization\application-ru.json" />
