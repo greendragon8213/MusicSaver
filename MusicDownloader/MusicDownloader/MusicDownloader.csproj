@@ -52,6 +52,10 @@
       <HintPath>..\packages\AutoMapper.6.1.1\lib\net45\AutoMapper.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="dotless.Core, Version=1.5.2.0, Culture=neutral, PublicKeyToken=96b446c9e63eae34, processorArchitecture=MSIL">
+      <HintPath>..\packages\dotless.1.5.2\lib\dotless.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
       <Private>True</Private>
@@ -135,6 +139,10 @@
       <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Web.Optimization.Less, Version=1.3.0.0, Culture=neutral, PublicKeyToken=9b7581e0240fe480, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Web.Optimization.Less.1.3.4\lib\net40\System.Web.Optimization.Less.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
@@ -171,18 +179,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\app\about.css" />
-    <Content Include="Content\app\how-it-works.css" />
-    <Content Include="Content\app\index.css" />
+    <None Include="Content\app\about.less" />
+    <None Include="Content\app\how-it-works.less" />
+    <None Include="Content\app\index.less" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\app\faq.css" />
+    <None Include="Content\app\faq.less" />
     <Content Include="Content\app\images\download %281%29 smaller.png" />
     <Content Include="Content\app\images\download %281%29.png" />
     <Content Include="Content\app\images\download %284%29.png" />
     <Content Include="Content\app\images\download.png" />
     <Content Include="Content\app\images\logo1.1.png" />
-    <Content Include="Content\app\site.css" />
+    <None Include="Content\app\site.less" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\app\constants.js" />

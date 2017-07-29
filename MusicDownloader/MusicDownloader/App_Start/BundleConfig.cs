@@ -21,13 +21,21 @@ namespace MusicDownloader
                 "~/Scripts/app/index.js"
                 ));
 
-            bundles.Add(new StyleBundle("~/bundles/app-css").Include(
-                "~/Content/app/site.css",
-                "~/Content/app/index.css",
-                "~/Content/app/how-it-works.css",
-                "~/Content/app/faq.css",
-                "~/Content/app/about.css"
+            bundles.Add(new LessBundle("~/bundles/app-less").Include(
+                "~/Content/app/site.less",
+                "~/Content/app/index.less",
+                "~/Content/app/how-it-works.less",
+                "~/Content/app/faq.less",
+                "~/Content/app/about.less"
                 ));
+
+            //bundles.Add(new StyleBundle("~/bundles/app-css").Include(
+            //    "~/Content/app/site.css",
+            //    "~/Content/app/index.css",
+            //    "~/Content/app/how-it-works.css",
+            //    "~/Content/app/faq.css",
+            //    "~/Content/app/about.css"
+            //    ));
 
             BundleTable.EnableOptimizations = true;
         }
