@@ -1,26 +1,17 @@
-﻿@font-face
-{
-    font-family: Droid Sans;
-    src: url("/fonts/DroidSans.ttf");
-}
+﻿@import "shared.less";
 
-@font-face
-{
-    font-family: Droid Sans Bold;
-    src: url("/fonts/DroidSans-Bold.ttf");
-}
-
-h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
-    font-family: "Droid Sans", sans-serif;
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, p {
+    font-family: @site-fonts;
+    color: @dark-blue-color;
 }
 
 html {
-    font-family: "Droid Sans", sans-serif;
+    font-family: @site-fonts;
     height: 100%;
 }
 
 body {
-    font-family: "Droid Sans", sans-serif;
+    font-family: @site-fonts;
     height: 100%;
     
     background: url("../Content/app/images/download (1) smaller.png") no-repeat center center fixed; 
@@ -34,18 +25,17 @@ body {
     text-transform: uppercase;
 }
 
-
-@light-blue-color: #64CCEB;
+@nav-menu-item-light-hover-color: #DBEFDE;
 
 .main-navbar .nav > li > a {
     font-size: 18px;
-    color: @light-blue-color;/*#64CCEB;*/
+    color: @light-blue-color;
 }
 
 .nav>li>a:hover, .nav>li>a:focus, .nav>li>a:active {
     border-radius: 20px;
-    color: #203765;
-    background-color: #DBEFDE;
+    color: @dark-blue-color;
+    background-color: @nav-menu-item-light-hover-color;
 }
 
 .body-content {
@@ -58,8 +48,7 @@ body {
 }
 
 footer {
-    background-color: #F1E9CB;
-    background-color: rgba(241, 233, 203, 0.7);
+    background: fade(@light-orange-color, 65%);
     position: fixed;
     width: 100%;
     bottom: 0;
@@ -67,7 +56,11 @@ footer {
 
 .footer-container {
     padding: 15px 45px;
-    color: #428bca;
+    color: @light-orange-inverse-color;
+}
+
+.footer-container > span > a{
+    color: @light-orange-inverse-color;
 }
 
 /*Bootstrap override begin*/
@@ -76,17 +69,18 @@ footer {
     text-transform: uppercase;
 }
 
+@alert-success-background-color: #dff0d8;
+@alert-danger-background-color: #f2dede;
+
 .alert-success {
-    background-color: #dff0d8;
-    background-color: rgba(223, 240, 216, 0.7);
+    background: fade(@alert-success-background-color, 70%);
 }
 
 .alert-danger {
-    background-color: #f2dede;
-    background-color: rgba(242, 222, 222, 0.7);
+    background: fade(@alert-danger-background-color, 70%);
 }
 
-/*end*/
+/*Bootstrap override end*/
 
 .main-navbar {
     overflow: visible;
@@ -96,8 +90,7 @@ footer {
     min-height: 40px;
     padding-left: 20px;
     padding-right: 20px;
-    background-color: #203748;
-    background-color: rgba(32, 55, 72, 0.75);
+    background: fade(@dark-blue-color, 75%);
 }
 
 .main-navbar .brand {
@@ -107,7 +100,7 @@ footer {
     margin-top: 7px;
     font-size: 24px;
     font-weight: 200;
-    color: #64CCEB;
+    color: @light-blue-color;
     /*text-shadow: 0 1px 0 #ffffff;*/
 }
 
@@ -143,11 +136,14 @@ li {
     margin: auto;
 }
 
+@modal-item-background-color: lemonchiffon;
+@modal-focus-item-background-color: lightcyan;
+
 .modal-item {
     margin: 0 0 10px 0;
-    background-color: lemonchiffon;
+    background-color: @modal-item-background-color;
 }
 
 .modal-item:focus {
-    background-color: lightcyan;
+    background-color: @modal-focus-item-background-color;
 }

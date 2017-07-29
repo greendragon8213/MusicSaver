@@ -22,6 +22,7 @@ namespace MusicDownloader
                 ));
 
             bundles.Add(new LessBundle("~/bundles/app-less").Include(
+                "~/Content/app/shared.less",
                 "~/Content/app/site.less",
                 "~/Content/app/index.less",
                 "~/Content/app/how-it-works.less",

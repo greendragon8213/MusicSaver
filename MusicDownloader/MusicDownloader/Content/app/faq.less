@@ -1,30 +1,38 @@
-﻿.panel {
-    background-color: #ffffff;
-    background-color: rgba(255,255,255,0.5);
-    border-color: powderblue;
+﻿@import "shared.less";
+
+@faq-item-background-color: white;
+@faq-item-border-color: powderblue;
+@faq-open-item-background-color: white;
+
+.panel {
+    background-color: @faq-item-background-color;
+    background-color: fade(@faq-item-background-color, 40%);
+    border-color: @faq-item-border-color;
+    color: @dark-blue-color;
 }
 
 .panel-default>.panel-heading {
-    background-color: #ffffff;
-    background-color: rgba(255,255,255,0.3);
+    background-color: @faq-open-item-background-color;
+    background-color: fade(@faq-open-item-background-color, 20%);
     border-color: powderblue;
 }
 
 .faq-content {
     text-align: justify; 
     padding: 0 15%;
+    color: red;
 }
 
 .faqHeader {
-        font-size: 27px;
-        margin: 20px;
-    }
+    font-size: 27px;
+    margin: 20px;
+}
 
 .panel-heading [data-toggle="collapse"]:after {
     font-family: 'Glyphicons Halflings';
     content: "\e072"; /* "play" icon */
     float: right;
-    color: #428bca;
+    color: @light-orange-inverse-color;
     font-size: 18px;
     line-height: 22px;
     /* rotate "play" icon from > (right arrow) to down arrow */
@@ -42,5 +50,9 @@
     -ms-transform: rotate(90deg);
     -o-transform: rotate(90deg);
     transform: rotate(90deg);
-    color: #555;
+    color: fade(@dark-blue-color, 80%);
+}
+
+.panel-title{
+    color: @dark-blue-color;
 }

@@ -190,6 +190,7 @@
     <Content Include="Content\app\images\download %284%29.png" />
     <Content Include="Content\app\images\download.png" />
     <Content Include="Content\app\images\logo1.1.png" />
+    <Content Include="Content\app\shared.less" />
     <None Include="Content\app\site.less" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
