@@ -1,0 +1,153 @@
+﻿@import "shared.less";
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, p {
+    font-family: @site-fonts;
+    color: @dark-blue-color;
+}
+
+html {
+    font-family: @site-fonts;
+    height: 100%;
+}
+
+body {
+    font-family: @site-fonts;
+    font-size: @site-font-size;
+    line-height: @site-line-height;
+    height: 100%;    
+    background: url("../Content/app/images/download (1) smaller.png") no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.brand {
+    text-transform: uppercase;
+}
+
+@nav-menu-item-light-hover-color: #DBEFDE;
+
+@footer-top-padding: 15px;
+@footer-bottom-padding: 15px;
+
+.main-navbar .nav > li > a {
+    font-size: 18px;
+    color: @light-blue-color;
+}
+
+.nav>li>a:hover, .nav>li>a:focus, .nav>li>a:active {
+    border-radius: 20px;
+    color: @dark-blue-color;
+    background-color: @nav-menu-item-light-hover-color;
+}
+
+.body-content {
+    text-align: center;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: @footer-bottom-padding + @footer-top-padding + @site-line-height*@site-font-size + 10px;
+    margin: auto;
+    width: 100%;
+}
+
+footer {
+    background: fade(@light-orange-color, 65%);
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+.footer-container {
+    padding: @footer-top-padding 45px @footer-bottom-padding 45px;
+    color: @light-orange-inverse-color;
+}
+
+.footer-container > span > a{
+    color: @light-orange-inverse-color;
+}
+
+/*Bootstrap override begin*/
+
+.btn {
+    text-transform: uppercase;
+}
+
+@alert-success-background-color: #dff0d8;
+@alert-danger-background-color: #f2dede;
+
+.alert-success {
+    background: fade(@alert-success-background-color, 70%);
+}
+
+.alert-danger {
+    background: fade(@alert-danger-background-color, 70%);
+}
+
+/*Bootstrap override end*/
+
+.main-navbar {
+    overflow: visible;
+}
+
+.main-navbar-inner {
+    min-height: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background: fade(@dark-blue-color, 75%);
+}
+
+.main-navbar .brand {
+    float: left;
+    display: block;
+    padding: 10px 20px;
+    margin-top: 7px;
+    font-size: 24px;
+    font-weight: 200;
+    color: @light-blue-color;
+    /*text-shadow: 0 1px 0 #ffffff;*/
+}
+
+.main-navbar .brand img {
+    max-height: 50px;
+}
+
+.main-navbar .nav.pull-right {
+    float: right;
+    margin-right: 0;
+}
+
+.main-navbar .nav {
+    position: relative;
+    left: 0;
+    display: block;
+    float: left;
+    margin: 0 10px 0 0;
+}
+
+.main-navbar .nav > li {
+    float: left;
+    margin: 20px 5px;
+}
+
+li {
+    line-height: 20px;
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+
+.modal-dialog {
+    margin: auto;
+}
+
+@modal-item-background-color: lemonchiffon;
+@modal-focus-item-background-color: lightcyan;
+
+.modal-item {
+    margin: 0 0 10px 0;
+    background-color: @modal-item-background-color;
+}
+
+.modal-item:focus {
+    background-color: @modal-focus-item-background-color;
+}
