@@ -7,8 +7,9 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @RenderSection("PageMeta", false)
     <title>@(string.IsNullOrEmpty(ViewBag.Title)?"": "| ")@Constants.ApplicationName</title>
-    <link rel="icon" type="image/png" href="~/Content/app/images/logo1.1.png" />
+    <link rel="icon" type="image/png" href="~/Content/app/images/free-song-downloader-logo.png" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     @Scripts.Render("~/bundles/utils-js")
@@ -24,7 +25,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>*@
-                <a class="brand" href="/Home/Index"><img src="~/Content/app/images/logo1.1.png" alt="Song downloader"> 
+                <a class="brand" href="/Home/Index"><img src="~/Content/app/images/free-song-downloader-logo.png" alt="@Constants.ApplicationName"> 
                     @Constants.ApplicationName
                 </a>
                 <ul class="nav nav-collapse pull-right">
@@ -56,9 +57,9 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h3 class="modal-title" id="contact-me-modalLabel">
+                    <h2 class="modal-title" id="contact-me-modalLabel">
                         <i class="icon-mail"></i> @ContactMeForm.ContactUsHeader
-                    </h3>
+                    </h2>
                 </div>
                 <div class="modal-body">
                     <form action="#" id="contact-me-form" style="text-align: center;">

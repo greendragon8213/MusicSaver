@@ -4,9 +4,19 @@
     ViewBag.Title = MusicDownloader.Resources.Pages.Layout.AboutLinkText;
 }
 
+@section PageMeta
+{
+    <meta name="keywords" lang="EN" content="music, download, free, multiple, playlists, offline, about">
+    <meta name="description" lang="EN" content="Download lots of music at once free">
+    <meta name="keywords" lang="RU" content="музыка, скачать бесплатно, несколько, списки воспроизведения, офлайн, о">
+    <meta name="description" lang="RU" content="Скачать много музыки сразу бесплатно">
+    <meta name="keywords" lang="UK" content="музика, скачати, безкоштовно, кілька, списки відтворення, офлайн, про">
+    <meta name="description" lang="UK" content="Завантажити багато музики одночасно безкоштовно">
+}
+
 <div class="about-page">
     <div class="container body-content" style="text-align: center">
-        <h2><i class="fa fa-info-circle" aria-hidden="true"></i> @string.Format(About.Header, Constants.ApplicationName)</h2>
+        <h1><i class="fa fa-info-circle" aria-hidden="true"></i> @string.Format(About.Header, Constants.ApplicationName)</h1>
         <div class="about-content">
             @Html.Raw(string.Format(About.Text,
                 $"<a href=\"/Home/HowItWorks\">{MusicDownloader.Resources.Pages.Layout.HowItWorksLinkText.ToLowerInvariant()}</a>",
