@@ -4,9 +4,18 @@
     ViewBag.Title = "";
 }
 
+@section PageMeta
+{
+    <meta name="keywords" lang="EN" content="music, download, free, multiple, playlist, offline, download music">
+    <meta name="description" lang="EN" content="Download lots of music at once free">
+    <meta name="keywords" lang="RU" content="музыка, скачать, бесплатно, много, плейлист, оффлайн, загрузить музыку">
+    <meta name="description" lang="RU" content="Скачать много музыки бесплатно">
+    <meta name="keywords" lang="UK" content="музика, завантажити, безкоштовно, багато, плейлист, оффлайн, завантажити музику">
+    <meta name="description" lang="UK" content="Завантажити багато музики безкоштовно">
+}
 <div class="home-page">
     <div class="container body-content">
-        <h2>@Index.DownloadSongs</h2>
+        <h1>@Index.DownloadSongs</h1>
         <div class="row">
             <div class="col-xs-12 col-md-12" id="songs-download-box">
                 <p>@Index.SpecifyNamesToDownload</p>

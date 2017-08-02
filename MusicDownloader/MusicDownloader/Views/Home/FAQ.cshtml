@@ -4,18 +4,28 @@
     ViewBag.Title = FAQ.FaqTitle;
 }
 
+@section PageMeta
+{
+    <meta name="keywords" lang="EN" content="how, faq, music, download, free, question, vk.com music, 2017, app">
+    <meta name="description" lang="EN" content="How to download music from vk.com, faq">
+    <meta name="keywords" lang="RU" content="Как, faq, музыка, скачать, бесплатно, вопрос, vk.com музыка, 2017, приложение">
+    <meta name="description" lang="RU" content="Как скачать музыку с vk.com, faq">
+    <meta name="keywords" lang="UK" content="Як, faq, музика, скачати, безкоштовно, питання, vk.com музика, 2017, додаток">
+    <meta name="description" lang="UK" content="Як завантажити музику з vk.com, faq">
+}
+
 <div class="faq-page">
     <div class="container body-content" style="text-align: center">
-        <h2>
-            <i class="fa fa-question-circle-o" aria-hidden="true"></i> @FAQ.FaqTitle</h2>
+        <h1>
+            <i class="fa fa-question-circle-o" aria-hidden="true"></i> @FAQ.FaqTitle</h1>
         <div class="faq-content">
             <div class="panel-group" id="accordion">
                 <!--<div class="faqHeader">General questions</div>-->
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4 class="panel-title">
+                        <h2 class="panel-title">
                             <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#download-from-vk">@FAQ.Question_HowToDownloadFromVk</a>
-                        </h4>
+                        </h2>
                     </div>
                     <div id="download-from-vk" class="panel-collapse collapse">
                         <div class="panel-body">
@@ -25,9 +35,9 @@
                 </div>
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4 class="panel-title">
+                        <h2 class="panel-title">
                             <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#download-all-from-vk">@FAQ.Question_HowToDownloadAllFromVk</a>
-                        </h4>
+                        </h2>
                     </div>
                     <div id="download-all-from-vk" class="panel-collapse collapse">
                         <div class="panel-body">
@@ -39,9 +49,9 @@
                 </div>
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4 class="panel-title">
+                        <h2 class="panel-title">
                             <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#too-long-downloads">@FAQ.Question_WhyIsBeingDownloadingLong</a>
-                        </h4>
+                        </h2>
                     </div>
                     <div id="too-long-downloads" class="panel-collapse collapse">
                         <div class="panel-body">

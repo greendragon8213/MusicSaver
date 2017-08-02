@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="UserGuideTitle" xml:space="preserve">
-    <value>Как пользоватся сервисом?</value>
+    <value>Как пользоваться сервисом?</value>
   </data>
   <data name="WriteSongsIntoInput" xml:space="preserve">
     <value>В поле ввода пишем название исполнителя и песни.</value>

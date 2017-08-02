@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -134,7 +134,7 @@
 3). Щоб завантажувати не групами з 100 пісень, просто використовуйте {0}. &lt;br&gt;</value>
   </data>
   <data name="Question_WhyIsBeingDownloadingLong" xml:space="preserve">
-    <value>Чому моя музика завантажується занадто довго?</value>
+    <value>Чому моя музика завантажується дуже довго?</value>
   </data>
   <data name="Answer_WhyIsBeingDownloadingLong" xml:space="preserve">
     <value>Це трапляється, коли ви намагаєтеся завантажити забагато пісень. Завантажте їх групами із 100 пісень. &lt;br&gt;

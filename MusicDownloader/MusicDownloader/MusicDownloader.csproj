@@ -181,14 +181,15 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\app\images\download %281%29 smaller.png" />
+    <Content Include="Content\app\images\background-image.png" />
     <Content Include="Content\app\images\download %281%29.png" />
     <Content Include="Content\app\images\download %284%29.png" />
     <Content Include="Content\app\images\download.png" />
-    <Content Include="Content\app\images\logo1.1.png" />
+    <Content Include="Content\app\images\free-song-downloader-logo.png" />
     <Content Include="Content\app\shared.less" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="robots.txt" />
     <Content Include="Scripts\app\constants.js" />
     <Content Include="Scripts\app\contact-me-form.js" />
     <Content Include="Scripts\app\index.js" />
@@ -214,6 +215,7 @@
     <Content Include="Scripts\jquery.blockUI.js" />
     <Content Include="Scripts\jquery.localize.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="sitemap.xml" />
     <Content Include="Web.config" />
     <Content Include="Views\Home\HowItWorks.cshtml" />
     <Content Include="Views\Home\FAQ.cshtml" />
