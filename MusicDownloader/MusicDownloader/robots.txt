@@ -1,0 +1,4 @@
+﻿User-agent: *
+Disallow:
+
+Sitemap: http://ec2-54-212-218-223.us-west-2.compute.amazonaws.com/sitemap.xml.
