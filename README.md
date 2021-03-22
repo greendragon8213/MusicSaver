@@ -1,9 +1,8 @@
 # MusicSaver
 
 This service allows to download lots of songs by a single request.
-It has been deployed to https://goo.gl/pgg9S4
 
-## What intresting was implemented?
+## Uses
 - DI (Unity)
 - Localization:
   - Back-end: Resources
